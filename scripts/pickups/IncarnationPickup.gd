@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		# pitaj osobu A kako se zove funkcija za dodavanje inkarnacije na GameManageru
+		GameManager.add_incarnation()
 		queue_free()
