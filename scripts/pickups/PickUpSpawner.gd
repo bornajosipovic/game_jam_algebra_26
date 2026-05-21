@@ -15,6 +15,11 @@ var center: Vector2
 
 func _ready() -> void:
 	center = Vector2(map_width / 2, map_height / 2)
+	GameManager.inkarnacija_started.connect(_on_inkarnacija_started)
+	
+	# OVO JE NEDOSTAJALO: Ručno pokreni prvu rundu čim se mapa učita!
+	call_deferred("_on_inkarnacija_started", GameManager.current_class)
+	print("PickupSpawner je spreman i pokreće se!")
 
 func spawn_pickups() -> void:
 	# Blizu vatre - samo HP i sekunde
@@ -31,11 +36,13 @@ func spawn_pickups() -> void:
 	spawn_in_zone(incarnation_pickup_scene, 2, mid_radius, 9999)
 
 func spawn_in_zone(scene: PackedScene, count: int, min_dist: float, max_dist: float) -> void:
+	if scene == null: return # Sigurnosna provjera
+	
 	for i in count:
 		var pos = get_position_in_zone(min_dist, max_dist)
 		var instance = scene.instantiate()
 		instance.position = pos
-		get_parent().add_child(instance)
+		add_child(instance) # PROMIJENJENO: Dodaje item kao svoje dijete, a ne od Parenta!
 
 func get_position_in_zone(min_dist: float, max_dist: float, attempts: int = 0) -> Vector2:
 	if attempts > 20:
@@ -47,3 +54,12 @@ func get_position_in_zone(min_dist: float, max_dist: float, attempts: int = 0) -
 	if dist < min_dist or dist > max_dist:
 		return get_position_in_zone(min_dist, max_dist, attempts + 1)
 	return pos
+	
+func _clear_pickups() -> void:
+	# Briše sve stare iteme s mape prije nego stvori nove
+	for child in get_children():
+		child.queue_free()
+
+func _on_inkarnacija_started(_klasa) -> void:
+	_clear_pickups()
+	spawn_pickups()

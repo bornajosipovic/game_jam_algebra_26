@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="the birth of the divine"
+run/main_scene="uid://b56tjf2kjj1ox"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

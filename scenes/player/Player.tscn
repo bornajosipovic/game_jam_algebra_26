@@ -51,5 +51,8 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAoeArea" unique_id=1228599273]
 shape = SubResource("CircleShape2D_524rm")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2004025653]
+zoom = Vector2(0.2, 0.2)
+
 [connection signal="body_entered" from="WeaponPivot/BasicMeleeArea" to="." method="_on_basic_melee_area_body_entered"]
 [connection signal="body_entered" from="SpecialAoeArea" to="." method="_on_special_aoe_area_body_entered"]

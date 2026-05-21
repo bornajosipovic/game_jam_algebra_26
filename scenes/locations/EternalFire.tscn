@@ -6,10 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l75c"]
 
 [node name="EternalFire" type="Area2D" unique_id=1992647352]
+script = ExtResource("1_44dcs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185442956]
 shape = SubResource("CircleShape2D_5l75c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1911377927]
 texture = ExtResource("1_5l75c")
-script = ExtResource("1_44dcs")

@@ -81,6 +81,8 @@ func die() -> void:
 # ---------------------------------------------------------
 func get_player_distance() -> float:
 	if player == null:
+		player = get_tree().get_first_node_in_group("player") # Pokušaj ga naći ponovno
+	if player == null:
 		return INF
 	return global_position.distance_to(player.global_position)
 
@@ -89,9 +91,10 @@ func is_player_in_detection_range() -> bool:
 
 func get_direction_to_player() -> Vector2:
 	if player == null:
+		player = get_tree().get_first_node_in_group("player") # Pokušaj ga naći ponovno
+	if player == null:
 		return Vector2.ZERO
 	return (player.global_position - global_position).normalized()
-
 # ---------------------------------------------------------
 # Kontaktni damage na playera
 # ---------------------------------------------------------

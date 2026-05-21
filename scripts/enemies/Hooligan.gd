@@ -7,13 +7,13 @@ extends Enemy
 enum State { IDLE, CHASE }
 
 var state: State = State.IDLE
-
+var quadrant: Rect2
 # ---------------------------------------------------------
 # Stats
 # ---------------------------------------------------------
 const HP        := 3
 const SPEED     := 80.0
-const DETECTION := 150.0
+const DETECTION := 1000.0
 const DAMAGE    := 1
 
 # ---------------------------------------------------------

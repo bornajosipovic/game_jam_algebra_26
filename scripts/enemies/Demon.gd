@@ -13,7 +13,7 @@ var state: State = State.IDLE
 # ---------------------------------------------------------
 const HP      := 10
 const SPEED   := 50.0
-const DETECTION := 60.0
+const DETECTION := 600.0
 const DAMAGE  := 1
 
 # ---------------------------------------------------------

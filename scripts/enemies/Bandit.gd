@@ -18,7 +18,7 @@ var state: State = State.ROAMING
 # ---------------------------------------------------------
 const HP               := 2
 const SPEED            := 110.0
-const DETECTION        := 200.0
+const DETECTION        := 600.0
 const FLEE_SPEED       := 70.0
 
 # ---------------------------------------------------------
@@ -129,12 +129,12 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			_execute_return()
 
 func _execute_steal() -> void:
-	if GameManager.ascension_points <= 0:
+	if GameManager.current_run_ascensions <= 0:
 		return
 
 	# Uzima Ascension
 	stolen_amount = 1
-	GameManager.ascension_points -= stolen_amount
+	GameManager.current_run_ascensions -= stolen_amount
 	ascension_stolen.emit(stolen_amount)
 
 	# Dasha u suprotnom smjeru
@@ -144,7 +144,7 @@ func _execute_steal() -> void:
 
 func _execute_return() -> void:
 	# Vraća ukradeni Ascension i despawna
-	GameManager.ascension_points += stolen_amount
+	GameManager.current_run_ascensions += stolen_amount
 	stolen_amount = 0
 	die()
 

@@ -25,16 +25,19 @@ const MIN_DIST_FIRE   := 150.0
 # ---------------------------------------------------------
 # Node reference
 # ---------------------------------------------------------
-@onready var enemy_root: Node2D      = $"../EnemySpawnRoot"
-@onready var player_spawn: Marker2D  = $"../PlayerSpawn"
-@onready var vjecna_vatra: Node2D    = $"../VjecnaVatra"
+@export var enemy_root: Node2D
+@export var player_spawn: Marker2D
+@export var vjecna_vatra: Node2D
 
 # ---------------------------------------------------------
 # Lifecycle
 # ---------------------------------------------------------
 func _ready() -> void:
 	GameManager.inkarnacija_started.connect(_on_inkarnacija_started)
-
+	call_deferred("_on_inkarnacija_started", GameManager.current_class)
+	print("SpawnManager je uspješno inicijaliziran i pokreće prvi spawn!")
+	
+	
 # ---------------------------------------------------------
 # Signal handler
 # ---------------------------------------------------------
