@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://1vf6u2if3a1j"]
 
+[ext_resource type="Texture2D" uid="uid://cmq7qlk7ttpq3" path="res://assets/sprites/pickups/vatra.png" id="1_5l75c"]
 [ext_resource type="Script" uid="uid://cy6h1y18nll2s" path="res://scripts/locations/EternalFire.gd" id="1_44dcs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l75c"]
@@ -10,4 +11,5 @@
 shape = SubResource("CircleShape2D_5l75c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1911377927]
+texture = ExtResource("1_5l75c")
 script = ExtResource("1_44dcs")
