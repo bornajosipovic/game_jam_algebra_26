@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		# pitaj osobu A koliko HP healamo i kako se zove funkcija na Playeru
+		body.heal(30)
 		queue_free()
