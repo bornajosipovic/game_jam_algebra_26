@@ -7,7 +7,7 @@
 radius = 63.1981
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfjak"]
-size = Vector2(143, 20)
+size = Vector2(196.25, 35.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1978424915]
 script = ExtResource("1_wr5hl")
@@ -25,7 +25,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/BasicMeleeArea" unique_id=1544245625]
-position = Vector2(138.5, 0)
+position = Vector2(172, -1)
 shape = SubResource("RectangleShape2D_gfjak")
 
 [connection signal="body_entered" from="WeaponPivot/BasicMeleeArea" to="." method="_on_basic_melee_area_body_entered"]
