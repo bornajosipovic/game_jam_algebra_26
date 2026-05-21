@@ -13,4 +13,4 @@ func postavi_upgrade(upgrade: Dictionary) -> void:
 	opis_label.text = upgrade["description"]
 
 func _on_pressed() -> void:
-	upgrade_odabran.emit(upgrade_data)
+	upgrade_odabran.emit(upgrade_data)s
