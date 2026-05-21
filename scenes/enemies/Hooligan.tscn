@@ -1,3 +1,24 @@
 [gd_scene format=3 uid="uid://bggmhuxag1rpa"]
 
-[node name="Hooligan" type="Node2D" unique_id=1802483723]
+[ext_resource type="Script" uid="uid://0ek2adi0dtt0" path="res://scripts/enemies/Hooligan.gd" id="1_d0gis"]
+[ext_resource type="Texture2D" uid="uid://dxv65p6s3nk87" path="res://assets/sprites/enemies_proba/hooligan.jpg" id="2_3uax0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hgtw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpqmx"]
+
+[node name="Hooligan" type="CharacterBody2D" unique_id=1978706943]
+script = ExtResource("1_d0gis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893924921]
+shape = SubResource("CircleShape2D_4hgtw")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=567874421]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1179259163]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=908105722]
+shape = SubResource("CircleShape2D_hpqmx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753134102]
+texture = ExtResource("2_3uax0")
