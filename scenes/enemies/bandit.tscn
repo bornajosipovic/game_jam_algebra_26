@@ -1,3 +1,24 @@
 [gd_scene format=3 uid="uid://hooxojul3ch1"]
 
-[node name="Bandit" type="Node2D" unique_id=745516407]
+[ext_resource type="Script" uid="uid://dwbv8bcxfl85e" path="res://scripts/enemies/Bandit.gd" id="1_7uncx"]
+[ext_resource type="Texture2D" uid="uid://dpglbhppogabc" path="res://assets/sprites/enemies_proba/bandit.jpg" id="2_qnlir"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7e8wm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rr0qm"]
+
+[node name="Bandit" type="CharacterBody2D" unique_id=1188016375]
+script = ExtResource("1_7uncx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1008929367]
+shape = SubResource("CircleShape2D_7e8wm")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1155519297]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1507467836]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1577878760]
+shape = SubResource("CircleShape2D_rr0qm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789595975]
+texture = ExtResource("2_qnlir")

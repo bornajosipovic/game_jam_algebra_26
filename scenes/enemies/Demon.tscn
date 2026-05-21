@@ -1,3 +1,24 @@
 [gd_scene format=3 uid="uid://coa2l4idbjrx2"]
 
-[node name="Demon" type="Node2D" unique_id=36044591]
+[ext_resource type="Script" uid="uid://kyrtctcee4b2" path="res://scripts/enemies/Demon.gd" id="1_heald"]
+[ext_resource type="Texture2D" uid="uid://jm6je23pee3t" path="res://assets/sprites/enemies_proba/demon.webp" id="2_f6x8y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0qgb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dvkv"]
+
+[node name="Demon" type="CharacterBody2D" unique_id=232341901]
+script = ExtResource("1_heald")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=735941590]
+shape = SubResource("CircleShape2D_i0qgb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1938143974]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1245936697]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1054095951]
+shape = SubResource("CircleShape2D_4dvkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=247204184]
+texture = ExtResource("2_f6x8y")
