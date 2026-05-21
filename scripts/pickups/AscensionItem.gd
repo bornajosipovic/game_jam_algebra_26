@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		GameManager.ascension_collected.emit(1)
+		GameManager.add_ascension(1)
 		queue_free()
