@@ -30,3 +30,11 @@ func _on_Button3_pressed() -> void:
 func odaberi(index: int) -> void:
 	UpgradeManager.apply_upgrade(ponudeni_upgradi[index])
 	visible = false
+
+
+func _on_Button_2_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_Button_3_pressed() -> void:
+	pass # Replace with function body.
