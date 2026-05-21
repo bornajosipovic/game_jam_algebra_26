@@ -5,5 +5,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		GameManager.add_ascension(1)
+		if GameManager.current_class == GameManager.PlayerClass.PRIEST:
+			GameManager.add_ascension(2)
+		else:
+			GameManager.add_ascension(1)
 		queue_free()
