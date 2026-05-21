@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnk0luyycttxl"]
 
 [ext_resource type="Script" uid="uid://w6s0wn6fy466" path="res://scripts/player/Player.gd" id="1_wr5hl"]
+[ext_resource type="PackedScene" uid="uid://ctcm52hrc67nj" path="res://scenes/player/projectile.tscn" id="2_4kuee"]
 [ext_resource type="Texture2D" uid="uid://dpuc7mo1pftlw" path="res://icon.svg" id="2_gfjak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kuee"]
@@ -9,8 +10,15 @@ radius = 63.1981
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfjak"]
 size = Vector2(196.25, 35.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_524rm"]
+radius = 326.09814
+
 [node name="Player" type="CharacterBody2D" unique_id=1978424915]
 script = ExtResource("1_wr5hl")
+projectile_scene = ExtResource("2_4kuee")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=466877068]
+position = Vector2(0, -147)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1515687387]
 texture = ExtResource("2_gfjak")
@@ -28,4 +36,12 @@ monitorable = false
 position = Vector2(172, -1)
 shape = SubResource("RectangleShape2D_gfjak")
 
+[node name="SpecialAoeArea" type="Area2D" parent="." unique_id=714391409]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAoeArea" unique_id=1228599273]
+shape = SubResource("CircleShape2D_524rm")
+
 [connection signal="body_entered" from="WeaponPivot/BasicMeleeArea" to="." method="_on_basic_melee_area_body_entered"]
+[connection signal="body_entered" from="SpecialAoeArea" to="." method="_on_special_aoe_area_body_entered"]

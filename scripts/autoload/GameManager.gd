@@ -16,7 +16,14 @@ var current_run_ascensions: int = 0
 
 # KLASE
 enum PlayerClass { KNIGHT, PRIEST, RAT, CHILD }
-var current_class: PlayerClass = PlayerClass.KNIGHT
+var current_class: PlayerClass = PlayerClass.RAT
+
+var class_weight = {
+	PlayerClass.KNIGHT: 100,
+	PlayerClass.PRIEST: 25,
+	PlayerClass.CHILD: 25,
+	PlayerClass.RAT: 25
+}
 
 # TIMER LOGIKA 
 var incarnation_duration: float = 15.0 # Osnovno trajanje je 15 sekundi
@@ -24,7 +31,29 @@ var time_remaining: float = 15.0
 var timer_active: bool = false
 
 func _ready():
-	pass
+	randomize()
+	start_new_iteration()
+	
+func start_new_iteration():
+	current_class = get_weighted_random_class()
+	time_remaining = incarnation_duration
+	timer_active = true
+	inkarnacija_started.emit(current_class)
+	
+func get_weighted_random_class() -> PlayerClass:
+	var total_weight = 0
+	for weight in class_weight.values():
+		total_weight += weight
+		
+	var roll = randi_range(1, total_weight)
+	var current_sum = 0
+	
+	for cls in class_weight.keys():
+		current_sum += class_weight[cls]
+		if roll <= current_sum:
+			return cls
+			
+	return PlayerClass.KNIGHT # Fallback za svaki slučaj
 
 func _process(delta):
 	if timer_active:
