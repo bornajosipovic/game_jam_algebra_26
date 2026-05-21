@@ -6,7 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kuee"]
 radius = 63.1981
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1978424915]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfjak"]
+size = Vector2(143, 20)
+
+[node name="Player" type="CharacterBody2D" unique_id=1978424915]
 script = ExtResource("1_wr5hl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1515687387]
@@ -14,3 +17,15 @@ texture = ExtResource("2_gfjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1181532627]
 shape = SubResource("CircleShape2D_4kuee")
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=208363050]
+
+[node name="BasicMeleeArea" type="Area2D" parent="WeaponPivot" unique_id=143508457]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/BasicMeleeArea" unique_id=1544245625]
+position = Vector2(138.5, 0)
+shape = SubResource("RectangleShape2D_gfjak")
+
+[connection signal="body_entered" from="WeaponPivot/BasicMeleeArea" to="." method="_on_basic_melee_area_body_entered"]

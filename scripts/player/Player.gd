@@ -57,3 +57,7 @@ func heal(amount: int):
 		current_hp = max_hp
 	print("Healed, current health: ", current_hp)
 	
+
+
+func _on_basic_melee_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
