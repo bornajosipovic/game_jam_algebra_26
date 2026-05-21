@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d32ir72b2s6to"]
 
+[ext_resource type="Texture2D" uid="uid://d3qkdvv8ijahk" path="res://assets/sprites/pickups/hp.png" id="1_3hkmw"]
 [ext_resource type="Script" uid="uid://dl6n4uoifariv" path="res://scripts/pickups/HPPickup.gd" id="1_o150u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dedx"]
@@ -10,4 +11,5 @@
 shape = SubResource("CircleShape2D_0dedx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1951493125]
+texture = ExtResource("1_3hkmw")
 script = ExtResource("1_o150u")

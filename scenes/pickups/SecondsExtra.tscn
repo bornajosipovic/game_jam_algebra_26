@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c4kocweb8320c"]
 
+[ext_resource type="Texture2D" uid="uid://bpiit6jyvkd7w" path="res://assets/sprites/pickups/sat.png" id="1_bk0bp"]
 [ext_resource type="Script" uid="uid://btr74pn16vt47" path="res://scripts/pickups/SecondsExtra.gd" id="1_dua26"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bk0bp"]
@@ -10,4 +11,5 @@
 shape = SubResource("CircleShape2D_bk0bp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1735314958]
+texture = ExtResource("1_bk0bp")
 script = ExtResource("1_dua26")
