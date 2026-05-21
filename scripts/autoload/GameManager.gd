@@ -19,7 +19,7 @@ enum PlayerClass { KNIGHT, PRIEST, RAT, CHILD }
 var current_class: PlayerClass = PlayerClass.RAT
 
 var class_weight = {
-	PlayerClass.KNIGHT: 100,
+	PlayerClass.KNIGHT: 25,
 	PlayerClass.PRIEST: 25,
 	PlayerClass.CHILD: 25,
 	PlayerClass.RAT: 25
@@ -63,7 +63,6 @@ func _process(delta):
 			timer_active = false
 			time_expired()
 
-# Funkcija koju tvoj kolega C treba za SecondsExtra pickup!
 func add_seconds(amount: float):
 	time_remaining += amount
 	print("Added ", amount, " seconds! Time remaining: ", time_remaining)

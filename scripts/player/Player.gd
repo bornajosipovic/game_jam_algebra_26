@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var base_speed: float = 300.0 
 var max_hp: int = 100
 var current_hp: int = 100
@@ -21,8 +22,18 @@ var rat_frenzy_damage: int = 0
 var is_frenzy_active: bool = false
 var is_immune: bool = false
 
-@export var projectile_scene: PackedScene
+var is_dashing: bool = false
+var dashes_left: int = 1
+var dash_speed_multiplier: float = 3.0
 
+
+
+@export var projectile_scene: PackedScene
+@export_group("Class Placeholders")
+@export var texture_knight: Texture2D
+@export var texture_priest: Texture2D
+@export var texture_rat: Texture2D
+@export var texture_child: Texture2D
 @onready var weapon_pivot = $WeaponPivot
 @onready var basic_melee_area = $WeaponPivot/BasicMeleeArea
 @onready var shoot_point = $ShootPoint
@@ -50,6 +61,8 @@ func _physics_process(_delta):
 		if input_dir != Vector2.ZERO:
 			last_direction = input_dir.normalized()
 		velocity = last_direction * base_speed
+	elif is_dashing:
+		velocity = last_direction * (base_speed * dash_speed_multiplier)
 	else:
 		# NORMALNO WASD KRETANJE
 		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -84,6 +97,8 @@ func apply_stats():
 	rat_frenzy_damage = 0
 	is_frenzy_active = false
 	is_immune = false
+	is_dashing = false
+	dashes_left = child_max_dashes
 	if special_aoe_area: special_aoe_area.scale = Vector2(1.0, 1.0)
 	
 	# 2. Bazni statovi (tvoj postojeći kod)
@@ -93,26 +108,32 @@ func apply_stats():
 			base_speed = 200.0
 			current_melee_damage = 50
 			if basic_melee_area: basic_melee_area.scale = Vector2(1.0, 1.0)
-			if sprite: sprite.modulate = Color.RED
+			if texture_knight and sprite:
+				sprite.texture = texture_knight
 		GameManager.PlayerClass.PRIEST:
 			max_hp = 100
 			base_speed = 250.0
-			if sprite: sprite.modulate = Color.BLUE
+			if texture_priest and sprite:
+				sprite.texture = texture_priest
 		GameManager.PlayerClass.RAT:
 			max_hp = 80
 			base_speed = 400.0
 			current_melee_damage = 15
 			if basic_melee_area: basic_melee_area.scale = Vector2(0.5, 0.5)
-			if sprite: sprite.modulate = Color.YELLOW
+			if texture_rat and sprite:
+				sprite.texture = texture_rat
 		GameManager.PlayerClass.CHILD:
 			max_hp = 60
 			base_speed = 300.0
-			if sprite: sprite.modulate = Color.GREEN
+			if texture_child and sprite:
+				sprite.texture = texture_child
 			
-	# 3. Primijeni postojeće upgradeove za ovu klasu
 	var my_upgrades = UpgradeManager.get_active_upgrades_for_class(GameManager.current_class)
 	for upg in my_upgrades:
 		apply_single_upgrade(upg, false)
+		
+	if GameManager.current_class == GameManager.PlayerClass.CHILD:
+		dashes_left = child_max_dashes
 		
 	current_hp = max_hp
 
@@ -216,7 +237,9 @@ func execute_special_attack():
 		GameManager.PlayerClass.RAT:
 			print("Stakor Frenzy Mode!")
 			is_frenzy_active = true
-			if rat_frenzy_damage == 9999: # Ako ima upgrade, daj mu imunost
+			var temp_base_speed = base_speed
+			base_speed *= 2
+			if rat_frenzy_damage == 999: # Ako ima upgrade, daj mu imunost
 				is_immune = true
 				
 			if special_aoe_area:
@@ -224,6 +247,7 @@ func execute_special_attack():
 				special_aoe_area.monitoring = true
 				
 			await get_tree().create_timer(3.0).timeout
+			base_speed = temp_base_speed
 			is_frenzy_active = false
 			is_immune = false
 			if special_aoe_area: special_aoe_area.monitoring = false
@@ -232,9 +256,37 @@ func execute_special_attack():
 			can_special_attack = true
 			
 		GameManager.PlayerClass.CHILD:
-			print("Dijete Dash! (TODO)")
-			await get_tree().create_timer(1.0).timeout
-			can_special_attack = true
+			if dashes_left <= 0: return # Osigurač
+			
+			print("Dijete koristi Dash!")
+			is_dashing = true
+			is_immune = true # Pali I-frames (koristi istu imunost kao Štakor!)
+			dashes_left -= 1
+			
+			# Dash traje jako kratko (0.2 sekunde)
+			await get_tree().create_timer(0.2).timeout
+			
+			is_dashing = false
+			is_immune = false # Gasi I-frames
+			
+			# Ako imamo još dasheva, odmah otključaj tipku Space za idući dash
+			if dashes_left > 0:
+				can_special_attack = true
+				
+			# Pokreni proces vraćanja ovog potrošenog dasha u pozadini
+			punjenje_dasha()
+			
+func punjenje_dasha():
+	# Cooldown za vraćanje 1 dasha je npr. 1.5 sekundi
+	await get_tree().create_timer(1.5 * cooldown_multiplier).timeout
+	
+	if dashes_left < child_max_dashes:
+		dashes_left += 1
+		print("Dash napunjen! Preostalo: ", dashes_left)
+		
+	# Čim imamo barem 1 dash, tipka Space opet radi
+	if dashes_left > 0:
+		can_special_attack = true
 
 
 func take_damage(amount: int):
