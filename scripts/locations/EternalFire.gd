@@ -5,6 +5,4 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		# cash-in logika
-		# pitaj A kako se zove funkcija za cash-in na GameManageru
-		pass
+		GameManager.perform_cash_in()
