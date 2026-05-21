@@ -1,11 +1,16 @@
-extends Node
+extends PanelContainer
 
+@onready var naziv_label = $VBoxContainer/Label
+@onready var opis_label = $VBoxContainer/Label2
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var upgrade_data: Dictionary
 
+signal upgrade_odabran(upgrade)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func postavi_upgrade(upgrade: Dictionary) -> void:
+	upgrade_data = upgrade
+	naziv_label.text = upgrade["name"]
+	opis_label.text = upgrade["description"]
+
+func _on_pressed() -> void:
+	upgrade_odabran.emit(upgrade_data)

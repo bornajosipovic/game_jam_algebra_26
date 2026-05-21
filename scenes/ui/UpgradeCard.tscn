@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://cgl8yxdopb1et"]
 
-[node name="UpgradeCard" type="Control" unique_id=1728745185]
-layout_mode = 3
+[node name="UpgradeCard" type="PanelContainer" unique_id=1472868889]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1213170598]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=251126772]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=958288644]
+layout_mode = 2
