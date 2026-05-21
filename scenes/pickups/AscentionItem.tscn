@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://cejlhk0f1048u"]
 
-[node name="AscentionItem" type="Node2D" unique_id=1656084663]
+[ext_resource type="Script" uid="uid://c8k2n7rqinmuj" path="res://scripts/pickups/AscensionItem.gd" id="1_5ir0f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kerk"]
+
+[node name="AscentionItem" type="Area2D" unique_id=1929614997]
+script = ExtResource("1_5ir0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952399651]
+shape = SubResource("CircleShape2D_6kerk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=597486229]
