@@ -1,2 +1,8 @@
 res://scenes/pickups/AscentionItem.tscn
 res://scripts/pickups/AscensionItem.gd
+res://scenes/pickups/HPPickup.tscn
+res://scripts/pickups/HPPickup.gd
+res://scenes/pickups/IncarnationPickup.tscn
+res://scripts/pickups/IncarnationPickup.gd
+res://scenes/pickups/SecondsExtra.tscn
+res://scripts/pickups/SecondsExtra.gd

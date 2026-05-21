@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://c4kocweb8320c"]
 
-[node name="SecondsExtra" type="Node2D" unique_id=1764098046]
+[ext_resource type="Script" uid="uid://btr74pn16vt47" path="res://scripts/pickups/SecondsExtra.gd" id="1_dua26"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bk0bp"]
+
+[node name="SecondsExtra" type="Area2D" unique_id=329609134]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272567814]
+shape = SubResource("CircleShape2D_bk0bp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1735314958]
+script = ExtResource("1_dua26")

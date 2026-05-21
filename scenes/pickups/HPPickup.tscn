@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://d32ir72b2s6to"]
 
-[node name="HpPickup" type="Node2D" unique_id=1341512367]
+[ext_resource type="Script" uid="uid://dl6n4uoifariv" path="res://scripts/pickups/HPPickup.gd" id="1_o150u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dedx"]
+
+[node name="HpPickup" type="Area2D" unique_id=1662230356]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1431217879]
+shape = SubResource("CircleShape2D_0dedx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1951493125]
+script = ExtResource("1_o150u")
