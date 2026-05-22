@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clasryhpdq17n"
-path="res://.godot/imported/reink.png-b285d15d1dc418db8f1c9784bb59caaf.ctex"
+uid="uid://btqs1i2sqh0s8"
+path="res://.godot/imported/REINCARNATIONFINAL.png-c38c0c9534c3107b0f68d8dc99bbeab6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pickups/reink.png"
-dest_files=["res://.godot/imported/reink.png-b285d15d1dc418db8f1c9784bb59caaf.ctex"]
+source_file="res://assets/sprites/pickups/REINCARNATIONFINAL.png"
+dest_files=["res://.godot/imported/REINCARNATIONFINAL.png-c38c0c9534c3107b0f68d8dc99bbeab6.ctex"]
 
 [params]
 
