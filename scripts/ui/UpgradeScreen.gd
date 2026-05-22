@@ -1,40 +1,31 @@
 extends CanvasLayer
 
 @export var upgrade_card_scene: PackedScene
+@onready var cards_container = $Control/HBoxContainer
 
-@onready var card1 = $Control/Button
-@onready var card2 = $Control/Button2
-@onready var card3 = $Control/Button3
-
-var ponudeni_upgradi: Array = []
+func _ready() -> void:
+	GameManager.show_upgrade_screen.connect(prikazi)
+	visible = false
 
 func prikazi() -> void:
 	visible = true
-	ponudeni_upgradi = UpgradeManager.get_random_upgrades(3)
-	postavi_karticu(card1, ponudeni_upgradi[0])
-	postavi_karticu(card2, ponudeni_upgradi[1])
-	postavi_karticu(card3, ponudeni_upgradi[2])
+	var ponudeni_upgradi = UpgradeManager.get_random_upgrades(3)
+	
+	# Ovdje sada pozivamo novu funkciju koja sama stvara kartice
+	populate_cards(ponudeni_upgradi)
 
-func postavi_karticu(button: Button, upgrade: Dictionary) -> void:
-	button.text = upgrade["name"] + "\n" + upgrade["description"]
+func populate_cards(upgrades_array: Array) -> void:
+	# Prvo očistimo kontejner u slučaju da su ostale kartice od prošlog puta
+	for child in cards_container.get_children():
+		child.queue_free()
+		
+	# Zatim instanciramo novu karticu za svaki upgrade koji smo izvukli
+	for upg in upgrades_array:
+		var card = upgrade_card_scene.instantiate()
+		cards_container.add_child(card)
+		card.setup(upg)
+		card.pressed.connect(_on_card_pressed.bind(upg))
 
-func _on_Button_pressed() -> void:
-	odaberi(0)
-
-func _on_Button2_pressed() -> void:
-	odaberi(1)
-
-func _on_Button3_pressed() -> void:
-	odaberi(2)
-
-func odaberi(index: int) -> void:
-	UpgradeManager.apply_upgrade(ponudeni_upgradi[index])
+func _on_card_pressed(upgrade: Dictionary) -> void:
+	UpgradeManager.apply_upgrade(upgrade)
 	visible = false
-
-
-func _on_Button_2_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_Button_3_pressed() -> void:
-	pass # Replace with function body.

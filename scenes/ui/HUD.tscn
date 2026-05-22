@@ -1,9 +1,153 @@
 [gd_scene format=3 uid="uid://dlsb7cjsroji7"]
 
-[node name="Hud" type="Control" unique_id=1396265573]
+[ext_resource type="Script" uid="uid://c5loulj0kwpgg" path="res://scripts/ui/HUD.gd" id="1_kw0id"]
+[ext_resource type="Script" uid="uid://c44ui7m2od60m" path="res://scripts/ui/overlay.gd" id="2_atyv1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atyv1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw0id"]
+bg_color = Color(0.48828563, 0.32115966, 0.1875985, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kw0id"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -200, 0)
+scale_max = 5.0
+color = Color(0.88973933, 0.27771512, 0, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=1321581304]
+script = ExtResource("1_kw0id")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=747507727]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2030255708]
+layout_mode = 2
+
+[node name="TimeBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1861730346]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_atyv1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kw0id")
+show_percentage = false
+
+[node name="FuseParticles" type="GPUParticles2D" parent="MarginContainer/VBoxContainer/TimeBar" unique_id=247724121]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_kw0id")
+
+[node name="MainRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=390330440]
+layout_mode = 2
+
+[node name="LeftSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainRow" unique_id=801654986]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentAscensionsLabel" type="Label" parent="MarginContainer/VBoxContainer/MainRow/LeftSection" unique_id=666700095]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="ClassLabel" type="Label" parent="MarginContainer/VBoxContainer/MainRow/LeftSection" unique_id=225628448]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="CenterSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainRow" unique_id=886464152]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CkassIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MainRow/CenterSection" unique_id=856168963]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainRow" unique_id=1628977317]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Reincarnations" type="Label" parent="MarginContainer/VBoxContainer/MainRow/RightSection" unique_id=1790012655]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 2
+
+[node name="TotalAscensions" type="Label" parent="MarginContainer/VBoxContainer/MainRow/RightSection" unique_id=1986934934]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 2
+
+[node name="AttackIndicators" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1229810004]
+layout_mode = 2
+
+[node name="BasicIndicator" type="ColorRect" parent="MarginContainer/VBoxContainer/AttackIndicators" unique_id=1072799107]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="LMB" type="Label" parent="MarginContainer/VBoxContainer/AttackIndicators/BasicIndicator" unique_id=663430544]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpecialIndicator" type="ColorRect" parent="MarginContainer/VBoxContainer/AttackIndicators" unique_id=314214272]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="S" type="Label" parent="MarginContainer/VBoxContainer/AttackIndicators/SpecialIndicator" unique_id=950800657]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Overlay" type="Control" parent="." unique_id=398762407]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_atyv1")
+
+[node name="BG" type="ColorRect" parent="Overlay" unique_id=1833015696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.83137256)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay" unique_id=802263397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Overlay/VBoxContainer" unique_id=74231279]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+vertical_alignment = 1

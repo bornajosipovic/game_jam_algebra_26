@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpglbhppogabc"
-path="res://.godot/imported/bandit.jpg-80ef358ab9f94e0a294d4fe29a37c057.ctex"
+uid="uid://ucgbxjj5seor"
+path="res://.godot/imported/IDLE_VITEZ_4.png-979e4a330a0b68419f8aa9b15c1445e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies_proba/bandit.jpg"
-dest_files=["res://.godot/imported/bandit.jpg-80ef358ab9f94e0a294d4fe29a37c057.ctex"]
+source_file="res://assets/animations/knight/IDLE_VITEZ_4.png"
+dest_files=["res://.godot/imported/IDLE_VITEZ_4.png-979e4a330a0b68419f8aa9b15c1445e4.ctex"]
 
 [params]
 

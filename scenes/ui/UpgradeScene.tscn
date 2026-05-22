@@ -1,31 +1,25 @@
 [gd_scene format=3 uid="uid://ha2mhtkl6co3"]
 
 [ext_resource type="Script" uid="uid://8k3eiir4vt1g" path="res://scripts/ui/UpgradeScreen.gd" id="1_ajdoc"]
+[ext_resource type="PackedScene" uid="uid://cgl8yxdopb1et" path="res://scenes/ui/UpgradeCard.tscn" id="2_ubcu4"]
 
 [node name="UpgradeScene" type="CanvasLayer" unique_id=454905930]
 script = ExtResource("1_ajdoc")
+upgrade_card_scene = ExtResource("2_ubcu4")
 
 [node name="Control" type="Control" parent="." unique_id=2371188]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="Control" unique_id=210496573]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button2" type="Button" parent="Control" unique_id=1243199074]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button3" type="Button" parent="Control" unique_id=1528262330]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Control/Button2" to="." method="_on_Button_2_pressed"]
-[connection signal="pressed" from="Control/Button3" to="." method="_on_Button_3_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1604239054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1

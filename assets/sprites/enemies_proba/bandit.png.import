@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpiit6jyvkd7w"
-path="res://.godot/imported/sat.png-80f19c70f66708142d57febd0d1de72a.ctex"
+uid="uid://djout0ipkkljf"
+path="res://.godot/imported/bandit.png-f260a1c34e391cbfde89e202444ba911.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pickups/sat.png"
-dest_files=["res://.godot/imported/sat.png-80f19c70f66708142d57febd0d1de72a.ctex"]
+source_file="res://assets/sprites/enemies_proba/bandit.png"
+dest_files=["res://.godot/imported/bandit.png-f260a1c34e391cbfde89e202444ba911.ctex"]
 
 [params]
 

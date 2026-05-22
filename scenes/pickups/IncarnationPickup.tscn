@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://brprxv0hq2fct"]
 
-[ext_resource type="Texture2D" uid="uid://clasryhpdq17n" path="res://assets/sprites/pickups/reink.png" id="1_1i4fd"]
 [ext_resource type="Script" uid="uid://ch8n0wrvggwp0" path="res://scripts/pickups/IncarnationPickup.gd" id="1_ulji3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1i4fd"]
+radius = 81.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ulji3"]
+load_path = "res://.godot/imported/reink.png-b285d15d1dc418db8f1c9784bb59caaf.ctex"
 
 [node name="IncarnationPickup" type="Area2D" unique_id=204526663]
 script = ExtResource("1_ulji3")
@@ -12,4 +15,5 @@ script = ExtResource("1_ulji3")
 shape = SubResource("CircleShape2D_1i4fd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1970478782]
-texture = ExtResource("1_1i4fd")
+scale = Vector2(0.43000728, 0.42837787)
+texture = SubResource("CompressedTexture2D_ulji3")

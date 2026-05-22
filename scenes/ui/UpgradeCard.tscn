@@ -1,20 +1,44 @@
 [gd_scene format=3 uid="uid://cgl8yxdopb1et"]
 
 [ext_resource type="Script" uid="uid://bkhysrp2vi2ls" path="res://scripts/ui/UpgradeCard.gd" id="1_yeejx"]
+[ext_resource type="Texture2D" uid="uid://cmq7qlk7ttpq3" path="res://assets/sprites/pickups/vatra.png" id="2_co4xo"]
+[ext_resource type="Texture2D" uid="uid://dthcwv22on4ee" path="res://assets/sprites/player/knight.jpg" id="3_7ulot"]
+[ext_resource type="Texture2D" uid="uid://mi3keiippo5p" path="res://assets/sprites/player/priest.jpg" id="4_7nqx0"]
+[ext_resource type="Texture2D" uid="uid://b52be6e0ids15" path="res://assets/sprites/player/rat.jpg" id="5_fvqyx"]
+[ext_resource type="Texture2D" uid="uid://c4nus0jq7aiur" path="res://assets/sprites/player/child.jpg" id="6_qmwee"]
 
-[node name="UpgradeCard" type="PanelContainer" unique_id=1472868889]
+[node name="UpgradeCard" type="Button" unique_id=895114558]
+custom_minimum_size = Vector2(400, 600)
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_vertical = 4
+script = ExtResource("1_yeejx")
+tex_general = ExtResource("2_co4xo")
+tex_knight = ExtResource("3_7ulot")
+tex_priest = ExtResource("4_7nqx0")
+tex_rat = ExtResource("5_fvqyx")
+tex_child = ExtResource("6_qmwee")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1730280064]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yeejx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1213170598]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1176539821]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=251126772]
+[node name="IconRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=839809645]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Label2" type="Label" parent="VBoxContainer" unique_id=958288644]
+[node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=81041669]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2

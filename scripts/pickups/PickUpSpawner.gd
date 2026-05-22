@@ -1,65 +1,119 @@
 extends Node
 
 @export var ascension_item_scene: PackedScene
-@export var hp_pickup_scene: PackedScene
 @export var seconds_pickup_scene: PackedScene
 @export var incarnation_pickup_scene: PackedScene
 
-var map_width: float = 1920.0
-var map_height: float = 1080.0
-var margin: float = 100.0
-var center: Vector2
+@export var vjecna_vatra: Node2D
 
-@export var near_radius: float = 250.0
-@export var mid_radius: float = 500.0
+@export var map_width: float = 20000.0
+@export var map_height: float = 10000.0
+@export var margin: float = 150.0
+
+@export var near_radius: float = 5000.0
+@export var mid_radius: float = 8000.0
+@export var far_radius: float = 11000.0
+@export var min_item_spacing: float = 5000.0
+
+var center: Vector2
+var spawned_positions: Array[Vector2] = []
 
 func _ready() -> void:
-	center = Vector2(map_width / 2, map_height / 2)
 	GameManager.inkarnacija_started.connect(_on_inkarnacija_started)
-	
-	# OVO JE NEDOSTAJALO: Ručno pokreni prvu rundu čim se mapa učita!
-	call_deferred("_on_inkarnacija_started", GameManager.current_class)
-	print("PickupSpawner je spreman i pokreće se!")
+	GameManager.show_upgrade_screen.connect(_clear_pickups)
 
 func spawn_pickups() -> void:
-	# Blizu vatre - samo HP i sekunde
-	spawn_in_zone(hp_pickup_scene, 2, 0, near_radius)
-	spawn_in_zone(seconds_pickup_scene, 1, 0, near_radius)
-	
-	# Srednja zona - mijesano
-	spawn_in_zone(ascension_item_scene, 4, near_radius, mid_radius)
-	spawn_in_zone(hp_pickup_scene, 1, near_radius, mid_radius)
-	spawn_in_zone(seconds_pickup_scene, 1, near_radius, mid_radius)
-	
-	# Daleka zona - najvise ascensiona
-	spawn_in_zone(ascension_item_scene, 6, mid_radius, 9999)
-	spawn_in_zone(incarnation_pickup_scene, 2, mid_radius, 9999)
+	if vjecna_vatra:
+		center = vjecna_vatra.global_position
+	else:
+		center = Vector2.ZERO
+
+	# Near zone (2500 - near_radius): time pickups + a seed ascension
+	spawn_in_zone(seconds_pickup_scene,     4, 2500.0,      near_radius)
+	spawn_in_zone(ascension_item_scene,     2, 2500.0,      near_radius)
+	spawn_in_zone(incarnation_pickup_scene, 2, 2500.0,      near_radius)
+
+	# Mid zone (near_radius - mid_radius): main ascension cluster + time pickups
+	spawn_in_zone(ascension_item_scene,     5, near_radius, mid_radius)
+	spawn_in_zone(seconds_pickup_scene,     2, near_radius, mid_radius)
+	spawn_in_zone(incarnation_pickup_scene, 3, near_radius, mid_radius)
+
+	# Far zone (mid_radius - far_radius): ascensions + incarnation pickups
+	spawn_in_zone(ascension_item_scene,     3, mid_radius,  far_radius)
+	spawn_in_zone(incarnation_pickup_scene, 2, mid_radius,  far_radius)
+
+	# --- DEBUG ---
+	print("========================================")
+	print("[PickUpSpawner] center: ", center, " | min_item_spacing: ", min_item_spacing)
+	print("[PickUpSpawner] Spawned ", spawned_positions.size(), " itema:")
+	for i in spawned_positions.size():
+		var p = spawned_positions[i]
+		var dist_center = snappedf(p.distance_to(center), 1.0)
+		print("[PickUpSpawner]   [", i, "] pos: ", p, " | dist od centra: ", dist_center)
+	print("[PickUpSpawner] --- MIN DISTANCE IZMEĐU ITEMA ---")
+	var min_found := INF
+	var min_pair := ""
+	for i in spawned_positions.size():
+		for j in spawned_positions.size():
+			if i >= j: continue
+			var d = spawned_positions[i].distance_to(spawned_positions[j])
+			if d < min_found:
+				min_found = d
+				min_pair = str(i) + " i " + str(j)
+	print("[PickUpSpawner]   Najmanji razmak: ", snappedf(min_found, 1.0), " (između itema ", min_pair, ")")
+	print("========================================")
+	# --- END DEBUG ---
 
 func spawn_in_zone(scene: PackedScene, count: int, min_dist: float, max_dist: float) -> void:
-	if scene == null: return # Sigurnosna provjera
-	
+	if scene == null:
+		return
 	for i in count:
 		var pos = get_position_in_zone(min_dist, max_dist)
+		spawned_positions.append(pos)
 		var instance = scene.instantiate()
 		instance.position = pos
-		add_child(instance) # PROMIJENJENO: Dodaje item kao svoje dijete, a ne od Parenta!
+		add_child(instance)
 
 func get_position_in_zone(min_dist: float, max_dist: float, attempts: int = 0) -> Vector2:
-	if attempts > 20:
-		return center + Vector2(randf_range(-400, 400), randf_range(-400, 400))
-	var x = randf_range(margin, map_width - margin)
-	var y = randf_range(margin, map_height - margin)
-	var pos = Vector2(x, y)
-	var dist = pos.distance_to(center)
-	if dist < min_dist or dist > max_dist:
-		return get_position_in_zone(min_dist, max_dist, attempts + 1)
+	var half_width  = map_width  / 2.0
+	var half_height = map_height / 2.0
+
+	var min_x = center.x - half_width  + margin
+	var max_x = center.x + half_width  - margin
+	var min_y = center.y - half_height + margin
+	var max_y = center.y + half_height - margin
+
+	var pos: Vector2
+	var inner_attempts := 0
+
+	# Generate a random point within the map rectangle that is also
+	# within [min_dist, max_dist] from center (distance check, no clamping)
+	while inner_attempts < 200:
+		pos = Vector2(
+			randf_range(min_x, max_x),
+			randf_range(min_y, max_y)
+		)
+		var d = pos.distance_to(center)
+		if d >= min_dist and d <= max_dist:
+			break
+		inner_attempts += 1
+
+	# Spacing check — retry the whole thing if too close to existing item
+	if attempts < 200:
+		for p in spawned_positions:
+			if pos.distance_to(p) < min_item_spacing:
+				return get_position_in_zone(min_dist, max_dist, attempts + 1)
+
 	return pos
-	
+
 func _clear_pickups() -> void:
-	# Briše sve stare iteme s mape prije nego stvori nove
+	spawned_positions.clear()
 	for child in get_children():
 		child.queue_free()
 
 func _on_inkarnacija_started(_klasa) -> void:
 	_clear_pickups()
+	# Čekamo 2 framea da budu sigurni da su sve pozicije u sceni ispravno postavljene
+	await get_tree().process_frame
+	await get_tree().process_frame
 	spawn_pickups()

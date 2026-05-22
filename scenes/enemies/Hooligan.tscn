@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dxv65p6s3nk87" path="res://assets/sprites/enemies_proba/hooligan.jpg" id="2_3uax0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hgtw"]
+radius = 296.13678
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpqmx"]
+radius = 299.22064
 
 [node name="Hooligan" type="CharacterBody2D" unique_id=1978706943]
 script = ExtResource("1_d0gis")
@@ -14,6 +16,9 @@ script = ExtResource("1_d0gis")
 shape = SubResource("CircleShape2D_4hgtw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=567874421]
+avoidance_enabled = true
+radius = 230.0
+max_speed = 1500.0
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1179259163]
 

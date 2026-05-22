@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do22gux7cp3ux"
-path="res://.godot/imported/asc.png-d0d9fad44b0a1554e44c40cff7b5a654.ctex"
+uid="uid://cq66monpua8is"
+path="res://.godot/imported/RUN_VITEZ_4.png-7f01cc7a3d8597909ebe1ee2496615c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pickups/asc.png"
-dest_files=["res://.godot/imported/asc.png-d0d9fad44b0a1554e44c40cff7b5a654.ctex"]
+source_file="res://assets/animations/knight/RUN_VITEZ_4.png"
+dest_files=["res://.godot/imported/RUN_VITEZ_4.png-7f01cc7a3d8597909ebe1ee2496615c6.ctex"]
 
 [params]
 

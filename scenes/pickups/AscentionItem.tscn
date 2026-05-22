@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cejlhk0f1048u"]
 
 [ext_resource type="Script" uid="uid://c8k2n7rqinmuj" path="res://scripts/pickups/AscensionItem.gd" id="1_5ir0f"]
-[ext_resource type="Texture2D" uid="uid://do22gux7cp3ux" path="res://assets/sprites/pickups/asc.png" id="2_h6xe8"]
+[ext_resource type="Texture2D" uid="uid://0650j063mmia" path="res://assets/sprites/pickups/ascensionFINAL.png" id="2_h6xe8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kerk"]
+radius = 116.72617
 
 [node name="AscentionItem" type="Area2D" unique_id=1929614997]
 script = ExtResource("1_5ir0f")
@@ -12,4 +13,5 @@ script = ExtResource("1_5ir0f")
 shape = SubResource("CircleShape2D_6kerk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=597486229]
+scale = Vector2(0.27573285, 0.27573285)
 texture = ExtResource("2_h6xe8")

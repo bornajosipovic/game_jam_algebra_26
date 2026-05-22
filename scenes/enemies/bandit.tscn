@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://hooxojul3ch1"]
 
 [ext_resource type="Script" uid="uid://dwbv8bcxfl85e" path="res://scripts/enemies/Bandit.gd" id="1_7uncx"]
-[ext_resource type="Texture2D" uid="uid://dpglbhppogabc" path="res://assets/sprites/enemies_proba/bandit.jpg" id="2_qnlir"]
+[ext_resource type="Texture2D" uid="uid://djout0ipkkljf" path="res://assets/sprites/enemies_proba/bandit.png" id="2_m82jd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7e8wm"]
+radius = 147.01361
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rr0qm"]
+radius = 164.0
 
 [node name="Bandit" type="CharacterBody2D" unique_id=1188016375]
 script = ExtResource("1_7uncx")
@@ -14,6 +16,9 @@ script = ExtResource("1_7uncx")
 shape = SubResource("CircleShape2D_7e8wm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1155519297]
+avoidance_enabled = true
+radius = 230.0
+max_speed = 1500.0
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1507467836]
 
@@ -21,4 +26,5 @@ shape = SubResource("CircleShape2D_7e8wm")
 shape = SubResource("CircleShape2D_rr0qm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789595975]
-texture = ExtResource("2_qnlir")
+scale = Vector2(0.21745749, 0.2185907)
+texture = ExtResource("2_m82jd")

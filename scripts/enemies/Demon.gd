@@ -1,24 +1,15 @@
 class_name Demon
 extends Enemy
 
-# ---------------------------------------------------------
-# State machine
-# ---------------------------------------------------------
 enum State { IDLE, CHASE }
 
 var state: State = State.IDLE
 
-# ---------------------------------------------------------
-# Stats
-# ---------------------------------------------------------
 const HP      := 10
-const SPEED   := 50.0
-const DETECTION := 600.0
-const DAMAGE  := 1
+const SPEED   := 900.0
+const DETECTION := 900.0
+const DAMAGE  := 1.0
 
-# ---------------------------------------------------------
-# Lifecycle
-# ---------------------------------------------------------
 func _ready() -> void:
 	super._ready()
 
@@ -34,9 +25,6 @@ func _physics_process(_delta: float) -> void:
 		State.IDLE:  _state_idle()
 		State.CHASE: _state_chase()
 
-# ---------------------------------------------------------
-# States
-# ---------------------------------------------------------
 func _state_idle() -> void:
 	stop_moving()
 	if is_player_in_detection_range():
