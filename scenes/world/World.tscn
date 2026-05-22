@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://brprxv0hq2fct" path="res://scenes/pickups/IncarnationPickup.tscn" id="8_yr1n6"]
 [ext_resource type="PackedScene" uid="uid://dlsb7cjsroji7" path="res://scenes/ui/HUD.tscn" id="9_l5ull"]
 [ext_resource type="PackedScene" uid="uid://ha2mhtkl6co3" path="res://scenes/ui/UpgradeScene.tscn" id="9_yr1n6"]
+[ext_resource type="AudioStream" uid="uid://qjlasmgj32wj" path="res://assets/sprites/music/MATKO GAME 2.wav" id="11_16fjv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5qbjp"]
 vertices = PackedVector2Array(1537.8906, 1243.2422, -297.4375, 1209.8125, -307.84375, -770.4531, 1549.9531, -780.34375)
@@ -135,3 +136,7 @@ incarnation_pickup_scene = ExtResource("8_yr1n6")
 [node name="UpgradeScene" parent="CanvasLayer" unique_id=454905930 instance=ExtResource("9_yr1n6")]
 
 [node name="HUD" parent="." unique_id=1321581304 instance=ExtResource("9_l5ull")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=749115728]
+stream = ExtResource("11_16fjv")
+autoplay = true
