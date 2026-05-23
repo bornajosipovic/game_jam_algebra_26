@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c5loulj0kwpgg" path="res://scripts/ui/HUD.gd" id="1_kw0id"]
 [ext_resource type="Script" uid="uid://c44ui7m2od60m" path="res://scripts/ui/overlay.gd" id="2_atyv1"]
+[ext_resource type="Texture2D" uid="uid://deh2kj0f0w7qg" path="res://assets/sprites/player/knightIcon.png" id="2_rnyu1"]
+[ext_resource type="Texture2D" uid="uid://38b0n78le0o" path="res://assets/sprites/player/priestIcon.png" id="3_jlufg"]
+[ext_resource type="Texture2D" uid="uid://cvac5dprtrmdm" path="res://assets/sprites/player/ratIcon.png" id="4_l20r4"]
+[ext_resource type="Texture2D" uid="uid://binjwyktr12n3" path="res://assets/sprites/player/childIcon.png" id="5_jvmx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atyv1"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -19,6 +23,10 @@ color = Color(0.88973933, 0.27771512, 0, 1)
 
 [node name="HUD" type="CanvasLayer" unique_id=1321581304]
 script = ExtResource("1_kw0id")
+icon_knight = ExtResource("2_rnyu1")
+icon_priest = ExtResource("3_jlufg")
+icon_rat = ExtResource("4_l20r4")
+icon_child = ExtResource("5_jvmx1")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=747507727]
 anchors_preset = 15
@@ -66,8 +74,8 @@ theme_override_font_sizes/font_size = 32
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="CkassIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MainRow/CenterSection" unique_id=856168963]
-custom_minimum_size = Vector2(64, 64)
+[node name="ClassIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MainRow/CenterSection" unique_id=856168963]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5

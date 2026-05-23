@@ -23,6 +23,7 @@ var is_immune: bool = false
 var is_dashing: bool = false
 var dashes_left: int = 1
 var dash_speed_multiplier: float = 3.0
+var is_attacking: bool = false
 
 @export var projectile_scene: PackedScene
 
@@ -30,7 +31,12 @@ var dash_speed_multiplier: float = 3.0
 @onready var weapon_pivot = $WeaponPivot
 @onready var basic_melee_area = $WeaponPivot/BasicMeleeArea
 @onready var shoot_point = $ShootPoint
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_knight = $SpriteKnight
+@onready var sprite_priest = $SpritePriest
+@onready var sprite_rat = $SpriteRat
+@onready var sprite_child = $SpriteChild
+
+var sprite: AnimatedSprite2D # Ovo više nema @onready, mijenjat ćemo ju dinamički!
 @onready var special_aoe_area = $SpecialAoeArea
 
 @onready var sfx_player = $SfxPlayer
@@ -81,7 +87,7 @@ func _physics_process(_delta):
 
 	var h_input = Input.get_axis("move_left", "move_right")
 	if sprite and h_input != 0.0:
-		sprite.flip_h = h_input < 0
+		sprite.flip_h = h_input > 0
 
 	# Animation state
 	_update_animation(velocity)
@@ -128,21 +134,35 @@ func apply_stats():
 		aura_visual.visible = false
 	if special_aoe_area: special_aoe_area.scale = Vector2(1.0, 1.0)
 	
+	sprite_knight.visible = false
+	sprite_priest.visible = false
+	sprite_rat.visible = false
+	sprite_child.visible = false
+	
+	# Zatim otkrivamo pravog i dodjeljujemo ga u glavnu varijablu
 	match GameManager.current_class:
 		GameManager.PlayerClass.KNIGHT:
+			sprite = sprite_knight
+			sprite.visible = true
 			armor_multiplier = 0.5
 			base_speed = 1000.0
 			current_melee_damage = 50
 			if basic_melee_area: basic_melee_area.scale = Vector2(1.0, 1.0)
 		GameManager.PlayerClass.PRIEST:
+			sprite = sprite_priest
+			sprite.visible = true
 			armor_multiplier = 0.8
 			base_speed = 1200.0
 		GameManager.PlayerClass.RAT:
+			sprite = sprite_rat
+			sprite.visible = true
 			armor_multiplier = 1.0
 			base_speed = 1600.0
 			current_melee_damage = 15
 			if basic_melee_area: basic_melee_area.scale = Vector2(0.5, 0.5)
 		GameManager.PlayerClass.CHILD:
+			sprite = sprite_child
+			sprite.visible = true
 			armor_multiplier = 1.2
 			base_speed = 1400.0
 
@@ -202,23 +222,32 @@ func apply_single_upgrade(upgrade: Dictionary):
 				"cm_rat":
 					rat_frenzy_damage = 999
 
+func _play_attack_anim() -> void:
+	if not sprite: return
+	
+	is_attacking = true
+	sprite.play("attack")
+	await sprite.animation_finished
+	is_attacking = false
+
 func _update_animation(current_velocity: Vector2) -> void:
 	if not sprite or is_dead:
 		return
-	# Don't interrupt attack animation while it's playing
-	if sprite.animation == "attack" and sprite.is_playing():
+		
+	# Block animation changes if we are currently attacking
+	if is_attacking:
 		return
+		
 	if current_velocity.length() > 10.0:
 		sprite.play("walk")
 	else:
-		sprite.flip_h = true
 		sprite.play("idle")
 
 func execute_basic_attack():
 	can_basic_attack = false
 	match GameManager.current_class:
 		GameManager.PlayerClass.KNIGHT:
-			if sprite: sprite.play("attack")
+			_play_attack_anim()
 			sfx_player.stream = sfx_attack_knight
 			sfx_player.play()
 			basic_melee_area.monitoring = true
@@ -228,7 +257,7 @@ func execute_basic_attack():
 			can_basic_attack = true
 			
 		GameManager.PlayerClass.RAT:
-			if sprite: sprite.play("attack")
+			_play_attack_anim()
 			sfx_player.stream = sfx_attack_rat
 			sfx_player.play()
 			basic_melee_area.monitoring = true
@@ -238,7 +267,7 @@ func execute_basic_attack():
 			can_basic_attack = true
 			
 		GameManager.PlayerClass.PRIEST:
-			if sprite: sprite.play("attack")
+			_play_attack_anim()
 			sfx_player.stream = sfx_attack_priest
 			sfx_player.play()
 			if projectile_scene:
@@ -247,12 +276,16 @@ func execute_basic_attack():
 				proj.speed = 2000.0
 				proj.global_position = shoot_point.global_position
 				proj.direction = (get_global_mouse_position() - shoot_point.global_position).normalized()
+				
+				# Povećavamo projektil za Svećenika (1.5x)
+				proj.scale = Vector2(1.5, 1.5)
+				
 				get_tree().root.add_child(proj)
 			await get_tree().create_timer(1.2 * cooldown_multiplier).timeout
 			can_basic_attack = true
 			
 		GameManager.PlayerClass.CHILD:
-			if sprite: sprite.play("attack")
+			_play_attack_anim()
 			sfx_player.stream = sfx_attack_child
 			sfx_player.play()
 			if projectile_scene:
@@ -261,6 +294,10 @@ func execute_basic_attack():
 				proj.speed = 1500.0
 				proj.global_position = shoot_point.global_position
 				proj.direction = (get_global_mouse_position() - shoot_point.global_position).normalized()
+				
+				# Smanjujemo projektil za Dijete (pola veličine)
+				proj.scale = Vector2(0.5, 0.5)
+				
 				get_tree().root.add_child(proj)
 			await get_tree().create_timer(0.8 * cooldown_multiplier).timeout
 			can_basic_attack = true

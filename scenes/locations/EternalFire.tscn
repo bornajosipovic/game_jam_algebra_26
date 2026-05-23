@@ -1,15 +1,50 @@
 [gd_scene format=3 uid="uid://1vf6u2if3a1j"]
 
-[ext_resource type="Texture2D" uid="uid://cmq7qlk7ttpq3" path="res://assets/sprites/pickups/vatra.png" id="1_5l75c"]
 [ext_resource type="Script" uid="uid://cy6h1y18nll2s" path="res://scripts/locations/EternalFire.gd" id="1_44dcs"]
+[ext_resource type="Texture2D" uid="uid://dxg06vij4s2lh" path="res://assets/sprites/player/eternalfire_sprites_spaced.png" id="2_5l75c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l75c"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oc6q"]
+atlas = ExtResource("2_5l75c")
+region = Rect2(0, 0, 857, 845)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkbee"]
+atlas = ExtResource("2_5l75c")
+region = Rect2(857, 0, 857, 845)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sswn"]
+atlas = ExtResource("2_5l75c")
+region = Rect2(1714, 0, 857, 845)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpw2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oc6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkbee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sswn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="EternalFire" type="Area2D" unique_id=1992647352]
+position = Vector2(216, -468)
+scale = Vector2(2.2070537, 2.2070537)
 script = ExtResource("1_44dcs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185442956]
+position = Vector2(-52.558758, 122.335045)
+scale = Vector2(22.144922, 22.144922)
 shape = SubResource("CircleShape2D_5l75c")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1911377927]
-texture = ExtResource("1_5l75c")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1904398693]
+sprite_frames = SubResource("SpriteFrames_cpw2o")
+frame = 2
+frame_progress = 0.3629932

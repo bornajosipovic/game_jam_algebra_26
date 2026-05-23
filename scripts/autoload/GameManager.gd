@@ -26,9 +26,9 @@ var current_class: PlayerClass = PlayerClass.RAT
 
 var class_weight = {
 	PlayerClass.KNIGHT: 0,
-	PlayerClass.PRIEST: 0,
+	PlayerClass.PRIEST: 100,
 	PlayerClass.CHILD: 0,
-	PlayerClass.RAT: 100
+	PlayerClass.RAT: 0
 }
 
 var incarnation_duration: float = 15.0
