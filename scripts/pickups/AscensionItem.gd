@@ -1,6 +1,15 @@
 extends Area2D
 
+var sfx_player: AudioStreamPlayer2D
+
+@export_group("Item Sounds")
+@export var sfx_pickup: AudioStream
+
+
 func _ready() -> void:
+	sfx_player = AudioStreamPlayer2D.new()
+	sfx_player.volume_db = 8.0
+	add_child(sfx_player)
 	connect("body_entered", _on_body_entered)
 	var player = get_tree().get_first_node_in_group("player")
 	if player and has_node("CollisionShape2D"):
@@ -14,6 +23,11 @@ func _on_body_entered(body: Node) -> void:
 			GameManager.add_ascension(2)
 		else:
 			GameManager.add_ascension(1)
+		if sfx_pickup:
+			visible = false
+			sfx_player.stream = sfx_pickup
+			sfx_player.play()
+			await sfx_player.finished
 		queue_free()
 
 func _hover():

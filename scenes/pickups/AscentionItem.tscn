@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cejlhk0f1048u"]
 
 [ext_resource type="Script" uid="uid://c8k2n7rqinmuj" path="res://scripts/pickups/AscensionItem.gd" id="1_5ir0f"]
+[ext_resource type="AudioStream" uid="uid://chkybp5w1vl4g" path="res://assets/audio/ascensionPickup.wav" id="2_0a80k"]
 [ext_resource type="Texture2D" uid="uid://0650j063mmia" path="res://assets/sprites/pickups/ascensionFINAL.png" id="2_h6xe8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kerk"]
@@ -8,6 +9,7 @@ radius = 116.72617
 
 [node name="AscentionItem" type="Area2D" unique_id=1929614997]
 script = ExtResource("1_5ir0f")
+sfx_pickup = ExtResource("2_0a80k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952399651]
 shape = SubResource("CircleShape2D_6kerk")

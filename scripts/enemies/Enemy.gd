@@ -12,6 +12,13 @@ enum Type { HOOLIGAN, BANDIT, DEMON }
 @export var detection_range: float = 150.0
 @export var contact_damage: int = 1
 
+var sfx_player: AudioStreamPlayer2D
+
+@export_group("Enemy Sounds")
+@export var sfx_hit: AudioStream
+@export var sfx_die: AudioStream
+@export var sfx_attack: AudioStream
+
 var current_hp: int
 var player: CharacterBody2D
 var is_dead: bool = false
@@ -19,11 +26,8 @@ var original_speed: float = 0.0
 var is_slowed: bool = false
 var slow_timer: float = 0.0
 
-# Set by SpawnManager before add_child; applied in apply_wave_scaling()
 var hp_multiplier: float = 1.0
 var speed_multiplier: float = 1.0
-
-# Hit stun
 var is_stunned: bool = false
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
@@ -31,6 +35,9 @@ var is_stunned: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
+	sfx_player = AudioStreamPlayer2D.new()
+	sfx_player.volume_db = 8.0
+	add_child(sfx_player)
 	match enemy_type:
 		Type.HOOLIGAN:
 			max_hp = 50
@@ -42,6 +49,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	call_deferred("apply_wave_scaling")
+	
 
 func apply_wave_scaling() -> void:
 	max_hp = int(ceil(max_hp * hp_multiplier))
@@ -52,7 +60,7 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 func move_toward_target(target_pos: Vector2) -> void:
-	if is_stunned:
+	if is_stunned or is_dead:
 		return
 	nav_agent.target_position = target_pos
 	if nav_agent.is_navigation_finished():
@@ -72,6 +80,9 @@ func take_damage(amount: int) -> void:
 	if current_hp <= 0:
 		die()
 	else:
+		if sfx_hit:
+			sfx_player.stream = sfx_hit
+			sfx_player.play()
 		play_hit_feedback()
 
 func play_hit_feedback() -> void:
@@ -97,14 +108,23 @@ func die() -> void:
 	is_dead = true
 	is_stunned = false
 
-	# Flash red on death then free
-	if animated_sprite:
-		animated_sprite.modulate = Color.RED
-
 	enemy_died.emit(enemy_type, global_position)
 	GameManager.enemy_died.emit(enemy_type)
 
-	await get_tree().create_timer(0.12).timeout
+	# Sakrij neprijatelja i isključi kolizije odmah
+	if animated_sprite:
+		animated_sprite.visible = false
+	hitbox.set_deferred("monitoring", false)
+	$CollisionShape2D.set_deferred("disabled", true)
+
+	visible = false
+	if sfx_die:
+		sfx_player.stream = sfx_die
+		sfx_player.play()
+		await sfx_player.finished
+	else:
+		await get_tree().create_timer(0.12).timeout
+		
 	queue_free()
 
 func get_player_distance() -> float:
@@ -128,11 +148,13 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_dead:
 		return
 	if body.is_in_group("player"):
+		if sfx_attack:
+			sfx_player.stream = sfx_attack
+			sfx_player.play()
 		body.take_damage(contact_damage)
 		_play_contact_flash()
 
 func _play_contact_flash() -> void:
-	# Brief white flash on enemy when it hits the player
 	if is_dead:
 		return
 	var tween = create_tween()

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://0ek2adi0dtt0" path="res://scripts/enemies/Hooligan.gd" id="1_d0gis"]
 [ext_resource type="Texture2D" uid="uid://dxv65p6s3nk87" path="res://assets/sprites/enemies_proba/hooligan.jpg" id="2_3uax0"]
+[ext_resource type="AudioStream" uid="uid://b2heju6ov7tjq" path="res://assets/audio/bruteGetsHit.wav" id="2_hpqmx"]
+[ext_resource type="AudioStream" uid="uid://bkvbiaycdfoth" path="res://assets/audio/bruteDies.wav" id="3_6uco8"]
+[ext_resource type="AudioStream" uid="uid://g3h4ehunniro" path="res://assets/audio/bruteHits.wav" id="4_6wj6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hgtw"]
 radius = 296.13678
@@ -11,6 +14,9 @@ radius = 299.22064
 
 [node name="Hooligan" type="CharacterBody2D" unique_id=1978706943]
 script = ExtResource("1_d0gis")
+sfx_hit = ExtResource("2_hpqmx")
+sfx_die = ExtResource("3_6uco8")
+sfx_attack = ExtResource("4_6wj6n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893924921]
 shape = SubResource("CircleShape2D_4hgtw")

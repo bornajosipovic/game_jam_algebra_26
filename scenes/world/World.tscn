@@ -5,12 +5,23 @@
 [ext_resource type="Script" uid="uid://crfbsiw6n8er6" path="res://scripts/autoload/SpawnManager.gd" id="3_6eebf"]
 [ext_resource type="PackedScene" uid="uid://1vf6u2if3a1j" path="res://scenes/locations/EternalFire.tscn" id="3_gbddb"]
 [ext_resource type="Script" uid="uid://c6ebldn8e87n8" path="res://scripts/pickups/PickUpSpawner.gd" id="4_gbddb"]
+[ext_resource type="AudioStream" uid="uid://g3dhjutylnxt" path="res://assets/audio/playerGettingHit.wav" id="4_jy5j1"]
 [ext_resource type="PackedScene" uid="uid://cejlhk0f1048u" path="res://scenes/pickups/AscentionItem.tscn" id="5_i1jm3"]
+[ext_resource type="AudioStream" uid="uid://deovqymxngclk" path="res://assets/audio/playerDie.wav" id="5_umbuh"]
+[ext_resource type="AudioStream" uid="uid://bberycdhl57gb" path="res://assets/audio/ratDie.mp3" id="6_juaju"]
+[ext_resource type="AudioStream" uid="uid://r4o4pd4nokem" path="res://assets/audio/knightBasic.mp3" id="7_lplgh"]
 [ext_resource type="PackedScene" uid="uid://c4kocweb8320c" path="res://scenes/pickups/SecondsExtra.tscn" id="7_qh0kd"]
+[ext_resource type="AudioStream" uid="uid://cgus2s4iltlgt" path="res://assets/audio/priestBasic.wav" id="8_d6tky"]
 [ext_resource type="PackedScene" uid="uid://brprxv0hq2fct" path="res://scenes/pickups/IncarnationPickup.tscn" id="8_yr1n6"]
+[ext_resource type="AudioStream" uid="uid://dxlyx4sq1tlyi" path="res://assets/audio/ratBasic.mp3" id="9_6mhxi"]
 [ext_resource type="PackedScene" uid="uid://dlsb7cjsroji7" path="res://scenes/ui/HUD.tscn" id="9_l5ull"]
 [ext_resource type="PackedScene" uid="uid://ha2mhtkl6co3" path="res://scenes/ui/UpgradeScene.tscn" id="9_yr1n6"]
+[ext_resource type="AudioStream" uid="uid://dmp3u0dh5i1hh" path="res://assets/audio/childBasic.wav" id="10_xclow"]
 [ext_resource type="AudioStream" uid="uid://qjlasmgj32wj" path="res://assets/sprites/music/MATKO GAME 2.wav" id="11_16fjv"]
+[ext_resource type="AudioStream" uid="uid://ckgoh7upcs2ni" path="res://assets/audio/frenzy.mp3" id="11_hon07"]
+[ext_resource type="AudioStream" uid="uid://dljdvtnwvey28" path="res://assets/audio/dash.wav" id="12_dobjl"]
+[ext_resource type="AudioStream" uid="uid://b0gm46r3hix53" path="res://assets/audio/swirl.wav" id="13_iehkj"]
+[ext_resource type="AudioStream" uid="uid://b8dhoexnfk2x1" path="res://assets/audio/aura.wav" id="14_iqxvy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5qbjp"]
 vertices = PackedVector2Array(1537.8906, 1243.2422, -297.4375, 1209.8125, -307.84375, -770.4531, 1549.9531, -780.34375)
@@ -28,6 +39,8 @@ size = Vector2(1920, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxiha"]
 size = Vector2(1920, 10)
+
+[sub_resource type="TileSet" id="TileSet_jy5j1"]
 
 [node name="World" type="Control" unique_id=237880013]
 layout_mode = 3
@@ -120,6 +133,17 @@ position = Vector2(1440, 482)
 
 [node name="Player" parent="." unique_id=1978424915 instance=ExtResource("1_5qbjp")]
 position = Vector2(925, 559)
+sfx_hit = ExtResource("4_jy5j1")
+sfx_die = ExtResource("5_umbuh")
+sfx_die_rat = ExtResource("6_juaju")
+sfx_attack_knight = ExtResource("7_lplgh")
+sfx_attack_priest = ExtResource("8_d6tky")
+sfx_attack_rat = ExtResource("9_6mhxi")
+sfx_attack_child = ExtResource("10_xclow")
+sfx_rat_frenzy = ExtResource("11_hon07")
+sfx_child_dash = ExtResource("12_dobjl")
+sfx_knight_swirl = ExtResource("13_iehkj")
+sfx_priest_aura = ExtResource("14_iqxvy")
 
 [node name="EternalFire" parent="." unique_id=1992647352 instance=ExtResource("3_gbddb")]
 position = Vector2(1438.0001, 484.00003)
@@ -140,3 +164,6 @@ incarnation_pickup_scene = ExtResource("8_yr1n6")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=749115728]
 stream = ExtResource("11_16fjv")
 autoplay = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2133761391]
+tile_set = SubResource("TileSet_jy5j1")

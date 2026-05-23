@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4kocweb8320c"]
 
 [ext_resource type="Script" uid="uid://btr74pn16vt47" path="res://scripts/pickups/SecondsExtra.gd" id="1_dua26"]
+[ext_resource type="AudioStream" uid="uid://b7w8bcactit8u" path="res://assets/audio/secondsPickup.wav" id="2_2qxju"]
 [ext_resource type="Texture2D" uid="uid://lu07xoma3abb" path="res://assets/sprites/pickups/extrasecondsFINAL.png" id="2_bk0bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qxju"]
@@ -8,6 +9,7 @@ size = Vector2(172, 250)
 
 [node name="SecondsExtra" type="Area2D" unique_id=329609134]
 script = ExtResource("1_dua26")
+sfx_pickup1 = ExtResource("2_2qxju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272567814]
 shape = SubResource("RectangleShape2D_2qxju")

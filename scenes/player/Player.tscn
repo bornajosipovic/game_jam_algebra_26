@@ -184,10 +184,18 @@ texture = SubResource("GradientTexture2D_v42im")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2004025653]
 zoom = Vector2(0.65, 0.65)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=377138180]
+[node name="SpriteKnight" type="AnimatedSprite2D" parent="." unique_id=377138180]
 scale = Vector2(1.6129727, 1.6129727)
 sprite_frames = SubResource("SpriteFrames_20koh")
 animation = &"walk"
+
+[node name="SfxPlayer" type="AudioStreamPlayer2D" parent="." unique_id=480496732]
+
+[node name="SpritePriest" type="AnimatedSprite2D" parent="." unique_id=307385569]
+
+[node name="SpriteRat" type="AnimatedSprite2D" parent="." unique_id=235215490]
+
+[node name="SpriteChild" type="AnimatedSprite2D" parent="." unique_id=79466052]
 
 [connection signal="body_entered" from="WeaponPivot/BasicMeleeArea" to="." method="_on_basic_melee_area_body_entered"]
 [connection signal="body_entered" from="SpecialAoeArea" to="." method="_on_special_aoe_area_body_entered"]

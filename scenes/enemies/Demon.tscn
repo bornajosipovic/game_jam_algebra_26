@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://coa2l4idbjrx2"]
 
 [ext_resource type="Script" uid="uid://kyrtctcee4b2" path="res://scripts/enemies/Demon.gd" id="1_heald"]
+[ext_resource type="AudioStream" uid="uid://vkl3qsims015" path="res://assets/audio/demonGetsHit.mp3" id="2_4dvkv"]
 [ext_resource type="Texture2D" uid="uid://ucgbxjj5seor" path="res://assets/animations/knight/IDLE_VITEZ_4.png" id="2_heald"]
+[ext_resource type="AudioStream" uid="uid://coo8p86fv4kbv" path="res://assets/audio/demonDie.wav" id="3_0hs7r"]
+[ext_resource type="AudioStream" uid="uid://cas1j1ud8wyg5" path="res://assets/audio/demonHits.wav" id="4_wmd5e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0qgb"]
 radius = 214.04906
@@ -47,6 +50,9 @@ animations = [{
 
 [node name="Demon" type="CharacterBody2D" unique_id=232341901]
 script = ExtResource("1_heald")
+sfx_hit = ExtResource("2_4dvkv")
+sfx_die = ExtResource("3_0hs7r")
+sfx_attack = ExtResource("4_wmd5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=735941590]
 shape = SubResource("CircleShape2D_i0qgb")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dlcxxaftnpigc"]
+
+[ext_resource type="Script" uid="uid://bmp4fqj8hvbmh" path="res://scripts/autoload/GameManager.gd" id="1_brl2m"]
+[ext_resource type="AudioStream" uid="uid://b8a2c7xad0edo" path="res://assets/audio/cashIn.mp3" id="2_qssh0"]
+[ext_resource type="AudioStream" uid="uid://ggglkdiyyuvw" path="res://assets/audio/upgradeSelect.wav" id="3_kt4pm"]
+[ext_resource type="AudioStream" uid="uid://k7ume2jjpa2t" path="res://assets/audio/knightSpawn.wav" id="4_ddjvc"]
+[ext_resource type="AudioStream" uid="uid://ca01fhoxi3t7j" path="res://assets/audio/priestSpawn.wav" id="5_5ega3"]
+[ext_resource type="AudioStream" uid="uid://b2onrrxgokktd" path="res://assets/audio/ratSpawn.wav" id="6_c817q"]
+[ext_resource type="AudioStream" uid="uid://bp0m7sd7k26pp" path="res://assets/audio/childSpawn.wav" id="7_lw12l"]
+
+[node name="GameManager" type="Node" unique_id=241842510]
+script = ExtResource("1_brl2m")
+sfx_cash_in = ExtResource("2_qssh0")
+sfx_upgrade_select = ExtResource("3_kt4pm")
+sfx_spawn_knight = ExtResource("4_ddjvc")
+sfx_spawn_priest = ExtResource("5_5ega3")
+sfx_spawn_rat = ExtResource("6_c817q")
+sfx_spawn_child = ExtResource("7_lw12l")

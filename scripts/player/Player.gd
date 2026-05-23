@@ -33,6 +33,22 @@ var dash_speed_multiplier: float = 3.0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var special_aoe_area = $SpecialAoeArea
 
+@onready var sfx_player = $SfxPlayer
+
+@export_group("Player Sounds")
+@export var sfx_hit: AudioStream
+@export var sfx_die: AudioStream
+@export var sfx_die_rat: AudioStream
+@export var sfx_attack_knight: AudioStream
+@export var sfx_attack_priest: AudioStream
+@export var sfx_attack_rat: AudioStream
+@export var sfx_attack_child: AudioStream
+@export var sfx_rat_frenzy: AudioStream
+@export var sfx_child_dash: AudioStream
+@export var sfx_knight_swirl: AudioStream
+@export var sfx_priest_aura: AudioStream
+
+
 func _ready():
 	GameManager.inkarnacija_started.connect(_on_inkarnacija_started)
 	GameManager.show_upgrade_screen.connect(_on_show_upgrade_screen)
@@ -203,6 +219,8 @@ func execute_basic_attack():
 	match GameManager.current_class:
 		GameManager.PlayerClass.KNIGHT:
 			if sprite: sprite.play("attack")
+			sfx_player.stream = sfx_attack_knight
+			sfx_player.play()
 			basic_melee_area.monitoring = true
 			await get_tree().create_timer(0.1).timeout
 			basic_melee_area.monitoring = false
@@ -211,6 +229,8 @@ func execute_basic_attack():
 			
 		GameManager.PlayerClass.RAT:
 			if sprite: sprite.play("attack")
+			sfx_player.stream = sfx_attack_rat
+			sfx_player.play()
 			basic_melee_area.monitoring = true
 			await get_tree().create_timer(0.1).timeout
 			basic_melee_area.monitoring = false
@@ -219,6 +239,8 @@ func execute_basic_attack():
 			
 		GameManager.PlayerClass.PRIEST:
 			if sprite: sprite.play("attack")
+			sfx_player.stream = sfx_attack_priest
+			sfx_player.play()
 			if projectile_scene:
 				var proj = projectile_scene.instantiate()
 				proj.damage = 5 * damage_multiplier
@@ -231,6 +253,8 @@ func execute_basic_attack():
 			
 		GameManager.PlayerClass.CHILD:
 			if sprite: sprite.play("attack")
+			sfx_player.stream = sfx_attack_child
+			sfx_player.play()
 			if projectile_scene:
 				var proj = projectile_scene.instantiate()
 				proj.damage = 3.5 * damage_multiplier
@@ -247,6 +271,8 @@ func execute_special_attack():
 	match GameManager.current_class:
 		GameManager.PlayerClass.KNIGHT:
 			if special_aoe_area:
+				sfx_player.stream = sfx_knight_swirl
+				sfx_player.play()
 				special_aoe_area.monitoring = true
 				await get_tree().create_timer(0.2).timeout
 				special_aoe_area.monitoring = false
@@ -256,6 +282,8 @@ func execute_special_attack():
 			
 		GameManager.PlayerClass.PRIEST:
 			if special_aoe_area:
+				sfx_player.stream = sfx_priest_aura
+				sfx_player.play()
 				special_aoe_area.monitoring = true
 				if aura_visual: 
 					aura_visual.visible = true
@@ -268,6 +296,8 @@ func execute_special_attack():
 			can_special_attack = true
 			
 		GameManager.PlayerClass.RAT:
+			sfx_player.stream = sfx_rat_frenzy
+			sfx_player.play()
 			is_frenzy_active = true
 			var temp_base_speed = base_speed
 			base_speed *= 2
@@ -293,6 +323,8 @@ func execute_special_attack():
 			is_dashing = true
 			is_immune = true 
 			dashes_left -= 1
+			sfx_player.stream = sfx_child_dash
+			sfx_player.play()
 			
 			await get_tree().create_timer(0.2).timeout
 			
@@ -316,6 +348,8 @@ func punjenje_dasha():
 func take_damage(amount: float):
 	if is_dead or is_immune: 
 		return
+	sfx_player.stream = sfx_hit
+	sfx_player.play()
 	var time_damage = amount * armor_multiplier
 	GameManager.reduce_time(time_damage)
 	_play_hit_flash()
@@ -328,6 +362,12 @@ func _play_hit_flash() -> void:
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.2)
 func die():
 	is_dead = true
+	if GameManager.current_class == GameManager.PlayerClass.RAT:
+		sfx_player.stream = sfx_die_rat
+		sfx_player.play()
+	else:
+		sfx_player.stream = sfx_die
+		sfx_player.play()
 	GameManager.player_died.emit() 
 	
 	visible = false

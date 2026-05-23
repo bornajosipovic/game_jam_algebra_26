@@ -94,6 +94,11 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		return
 	if body.is_in_group("player") == false:
 		return
+		
+	if sfx_attack:
+		sfx_player.stream = sfx_attack
+		sfx_player.play()
+		
 	if state == State.CHASE:
 		_execute_steal()
 

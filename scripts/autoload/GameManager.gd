@@ -26,17 +26,35 @@ var current_class: PlayerClass = PlayerClass.RAT
 
 var class_weight = {
 	PlayerClass.KNIGHT: 0,
-	PlayerClass.PRIEST: 100,
+	PlayerClass.PRIEST: 0,
 	PlayerClass.CHILD: 0,
-	PlayerClass.RAT: 0
+	PlayerClass.RAT: 100
 }
 
 var incarnation_duration: float = 15.0
 var time_remaining: float = 15.0
 var timer_active: bool = false
 
+@export_group("Global Sounds")
+@export var sfx_cash_in: AudioStream
+@export var sfx_upgrade_select: AudioStream
+@export var sfx_spawn_knight: AudioStream
+@export var sfx_spawn_priest: AudioStream
+@export var sfx_spawn_rat: AudioStream
+@export var sfx_spawn_child: AudioStream
+
+var audio_player: AudioStreamPlayer
+
+func play_global_sound(stream: AudioStream):
+	if stream and audio_player:
+		audio_player.stream = stream
+		audio_player.play()
+
 func _ready():
 	randomize()
+	audio_player = AudioStreamPlayer.new()
+	audio_player.volume_db = 4
+	add_child(audio_player)
 	player_died.connect(_on_player_died)
 	upgrade_selected.connect(_on_upgrade_selected)
 	enemy_died.connect(_on_enemy_died)
@@ -66,6 +84,7 @@ func start_upgrade_phase():
 	show_upgrade_screen.emit()
 
 func _on_upgrade_selected(_upgrade: Dictionary):
+	play_global_sound(sfx_upgrade_select)
 	start_new_iteration()
 
 func get_scaled_duration() -> float:
@@ -77,6 +96,11 @@ func start_new_iteration():
 	time_remaining = get_scaled_duration()
 	timer_active = true
 	inkarnacija_started.emit(current_class)
+	match current_class:
+		PlayerClass.KNIGHT: play_global_sound(sfx_spawn_knight)
+		PlayerClass.PRIEST: play_global_sound(sfx_spawn_priest)
+		PlayerClass.RAT: play_global_sound(sfx_spawn_rat)
+		PlayerClass.CHILD: play_global_sound(sfx_spawn_child)
 
 func get_weighted_random_class() -> PlayerClass:
 	var total_weight = 0
@@ -126,6 +150,7 @@ func add_ascension(amount: int):
 	ascension_collected.emit(amount)
 
 func perform_cash_in():
+	play_global_sound(sfx_cash_in)
 	var cashed_amount = current_run_ascensions
 	total_score += cashed_amount
 	remaining_incarnations += current_run_incarnations - 1
