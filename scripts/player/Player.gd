@@ -146,7 +146,7 @@ func apply_stats():
 			sprite.visible = true
 			armor_multiplier = 0.5
 			base_speed = 1000.0
-			current_melee_damage = 50
+			current_melee_damage = 5
 			if basic_melee_area: basic_melee_area.scale = Vector2(1.0, 1.0)
 		GameManager.PlayerClass.PRIEST:
 			sprite = sprite_priest
@@ -227,7 +227,11 @@ func _play_attack_anim() -> void:
 	
 	is_attacking = true
 	sprite.play("attack")
-	await sprite.animation_finished
+	
+	# Umjesto oslanjanja na nesiguran signal, koristimo fiksni timer.
+	# Ovo apsolutno garantira da će se animacija otključati nakon 0.3 sekunde.
+	await get_tree().create_timer(0.5).timeout
+	
 	is_attacking = false
 
 func _update_animation(current_velocity: Vector2) -> void:
@@ -276,10 +280,12 @@ func execute_basic_attack():
 				proj.speed = 2000.0
 				proj.global_position = shoot_point.global_position
 				proj.direction = (get_global_mouse_position() - shoot_point.global_position).normalized()
+				proj.scale = Vector2(5, 5)
 				
-				# Povećavamo projektil za Svećenika (1.5x)
-				proj.scale = Vector2(1.5, 1.5)
-				
+				# NAJLAKŠE RJEŠENJE: Palimo vatrenu kuglu
+				if proj.has_node("SpriteFireball"):
+					proj.get_node("SpriteFireball").visible = true
+					
 				get_tree().root.add_child(proj)
 			await get_tree().create_timer(1.2 * cooldown_multiplier).timeout
 			can_basic_attack = true
@@ -294,10 +300,11 @@ func execute_basic_attack():
 				proj.speed = 1500.0
 				proj.global_position = shoot_point.global_position
 				proj.direction = (get_global_mouse_position() - shoot_point.global_position).normalized()
+				proj.scale = Vector2(2, 2)
 				
-				# Smanjujemo projektil za Dijete (pola veličine)
-				proj.scale = Vector2(0.5, 0.5)
-				
+				if proj.has_node("SpriteRock"):
+					proj.get_node("SpriteRock").visible = true
+					
 				get_tree().root.add_child(proj)
 			await get_tree().create_timer(0.8 * cooldown_multiplier).timeout
 			can_basic_attack = true
@@ -307,6 +314,7 @@ func execute_special_attack():
 	
 	match GameManager.current_class:
 		GameManager.PlayerClass.KNIGHT:
+			_play_special_anim()
 			if special_aoe_area:
 				sfx_player.stream = sfx_knight_swirl
 				sfx_player.play()
@@ -425,3 +433,15 @@ func _on_special_aoe_area_body_entered(body: Node2D) -> void:
 	if GameManager.current_class == GameManager.PlayerClass.RAT and is_frenzy_active:
 		if body.has_method("take_damage") and rat_frenzy_damage > 0:
 			body.take_damage(rat_frenzy_damage)
+			
+func _play_special_anim() -> void:
+	if not sprite: return
+	
+	# Koristimo is_attacking varijablu da zaključamo kretanje animacije
+	is_attacking = true 
+	sprite.play("special")
+	
+	# Ovdje stavi vrijeme koliko otprilike traje tvoja special animacija
+	await get_tree().create_timer(0.85).timeout
+	
+	is_attacking = false

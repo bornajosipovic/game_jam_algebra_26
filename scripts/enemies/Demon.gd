@@ -7,7 +7,7 @@ var state: State = State.IDLE
 
 const HP      := 10
 const SPEED   := 900.0
-const DETECTION := 900.0
+const DETECTION := 1400.0
 const DAMAGE  := 1.0
 
 func _ready() -> void:

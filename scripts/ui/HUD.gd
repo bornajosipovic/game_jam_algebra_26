@@ -95,11 +95,11 @@ func _on_cash_in(_score) -> void:
 
 func _on_game_over(_score) -> void:
 	overlay.visible = true
-	overlay.show_message("GAME OVER", Color(1, 0.2, 0.2))
+	overlay.show_message("You died.", Color(1, 0.2, 0.2))
 
 func _on_game_won(_score) -> void:
 	overlay.visible = true
-	overlay.show_message("YOU WIN", Color(1, 0.85, 0.1))
+	overlay.show_message("Ashbound God Reborn", Color(1, 0.85, 0.1))
 
 func _update_hud_values(_amount = 0) -> void:
 	current_ascensions_label.text = "TRENUTNI RUN: " + str(GameManager.current_run_ascensions)
@@ -109,4 +109,4 @@ func _update_hud_values(_amount = 0) -> void:
 		prikaz_inkarnacija += " (+" + str(GameManager.current_run_incarnations) + ")"
 		
 	remaining_incarnations_label.text = "INKARNACIJE: " + prikaz_inkarnacija
-	total_ascensions_label.text = "UKUPNO UKRADENO: " + str(GameManager.total_score)
+	total_ascensions_label.text = "UKUPNO ASCENSIONA: " + str(GameManager.total_score)

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnk0luyycttxl" path="res://scenes/player/Player.tscn" id="1_5qbjp"]
 [ext_resource type="Script" uid="uid://ye0tfeie0dgr" path="res://scripts/ui/world.gd" id="1_l5ull"]
+[ext_resource type="Texture2D" uid="uid://cndn6lcvq7kr7" path="res://assets/sprites/player/Screenshot_2026-05-22_153523.jpg" id="2_umbuh"]
 [ext_resource type="Script" uid="uid://crfbsiw6n8er6" path="res://scripts/autoload/SpawnManager.gd" id="3_6eebf"]
 [ext_resource type="PackedScene" uid="uid://1vf6u2if3a1j" path="res://scenes/locations/EternalFire.tscn" id="3_gbddb"]
 [ext_resource type="Script" uid="uid://c6ebldn8e87n8" path="res://scripts/pickups/PickUpSpawner.gd" id="4_gbddb"]
@@ -54,6 +55,708 @@ offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l5ull")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1637066487]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=1602657384]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background3" type="Sprite2D" parent="." unique_id=1618497175]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background4" type="Sprite2D" parent="." unique_id=1017204580]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background5" type="Sprite2D" parent="." unique_id=1680558866]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background6" type="Sprite2D" parent="." unique_id=2068544895]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background7" type="Sprite2D" parent="." unique_id=1521652115]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background8" type="Sprite2D" parent="." unique_id=1991490301]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background9" type="Sprite2D" parent="." unique_id=873747965]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, -4374)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background10" type="Sprite2D" parent="." unique_id=1703951611]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background11" type="Sprite2D" parent="." unique_id=1589709991]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background12" type="Sprite2D" parent="." unique_id=84248045]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background13" type="Sprite2D" parent="." unique_id=334011180]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background14" type="Sprite2D" parent="." unique_id=989201359]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background15" type="Sprite2D" parent="." unique_id=1044017923]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background16" type="Sprite2D" parent="." unique_id=268978814]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background17" type="Sprite2D" parent="." unique_id=359390721]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background18" type="Sprite2D" parent="." unique_id=1031255751]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, -3027.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background19" type="Sprite2D" parent="." unique_id=1551092443]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background20" type="Sprite2D" parent="." unique_id=1984357505]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background21" type="Sprite2D" parent="." unique_id=1316203269]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background22" type="Sprite2D" parent="." unique_id=1157281372]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background23" type="Sprite2D" parent="." unique_id=143956519]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background24" type="Sprite2D" parent="." unique_id=1630131259]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background25" type="Sprite2D" parent="." unique_id=1229677559]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background26" type="Sprite2D" parent="." unique_id=290514119]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background27" type="Sprite2D" parent="." unique_id=1263992216]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, -1643.6191)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background28" type="Sprite2D" parent="." unique_id=1097320960]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background29" type="Sprite2D" parent="." unique_id=341698998]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background30" type="Sprite2D" parent="." unique_id=2089023998]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background31" type="Sprite2D" parent="." unique_id=1619968678]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background32" type="Sprite2D" parent="." unique_id=1726063353]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background33" type="Sprite2D" parent="." unique_id=1201684397]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background34" type="Sprite2D" parent="." unique_id=989980851]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background35" type="Sprite2D" parent="." unique_id=174019748]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background36" type="Sprite2D" parent="." unique_id=954500434]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, -297.23828)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background37" type="Sprite2D" parent="." unique_id=15966555]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background38" type="Sprite2D" parent="." unique_id=783929175]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background39" type="Sprite2D" parent="." unique_id=1839437398]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background40" type="Sprite2D" parent="." unique_id=245799531]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background41" type="Sprite2D" parent="." unique_id=373136030]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background42" type="Sprite2D" parent="." unique_id=369347506]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background43" type="Sprite2D" parent="." unique_id=1521759512]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background44" type="Sprite2D" parent="." unique_id=467514257]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background45" type="Sprite2D" parent="." unique_id=1505222292]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background46" type="Sprite2D" parent="." unique_id=1660351506]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background47" type="Sprite2D" parent="." unique_id=1155058805]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background48" type="Sprite2D" parent="." unique_id=1760647295]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background49" type="Sprite2D" parent="." unique_id=1040889638]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background50" type="Sprite2D" parent="." unique_id=1171518096]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background51" type="Sprite2D" parent="." unique_id=195552102]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background52" type="Sprite2D" parent="." unique_id=865231756]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background53" type="Sprite2D" parent="." unique_id=1221611830]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background54" type="Sprite2D" parent="." unique_id=1806317702]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background55" type="Sprite2D" parent="." unique_id=572300949]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background56" type="Sprite2D" parent="." unique_id=420644445]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background57" type="Sprite2D" parent="." unique_id=421258568]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background58" type="Sprite2D" parent="." unique_id=1543419934]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background59" type="Sprite2D" parent="." unique_id=423102204]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background60" type="Sprite2D" parent="." unique_id=130159340]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background61" type="Sprite2D" parent="." unique_id=308851807]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background62" type="Sprite2D" parent="." unique_id=590589063]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background63" type="Sprite2D" parent="." unique_id=311207979]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background64" type="Sprite2D" parent="." unique_id=360796093]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background65" type="Sprite2D" parent="." unique_id=140136394]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background66" type="Sprite2D" parent="." unique_id=1806086761]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background67" type="Sprite2D" parent="." unique_id=935582463]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background68" type="Sprite2D" parent="." unique_id=2062556031]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background69" type="Sprite2D" parent="." unique_id=2094340424]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background70" type="Sprite2D" parent="." unique_id=405862537]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background71" type="Sprite2D" parent="." unique_id=564013616]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background72" type="Sprite2D" parent="." unique_id=447229896]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background73" type="Sprite2D" parent="." unique_id=1367676733]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background74" type="Sprite2D" parent="." unique_id=1494834498]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background75" type="Sprite2D" parent="." unique_id=495733552]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background76" type="Sprite2D" parent="." unique_id=1786294285]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background77" type="Sprite2D" parent="." unique_id=271125935]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background78" type="Sprite2D" parent="." unique_id=1555107839]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background79" type="Sprite2D" parent="." unique_id=347659340]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background80" type="Sprite2D" parent="." unique_id=84439538]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background81" type="Sprite2D" parent="." unique_id=511184185]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 862.38086)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background82" type="Sprite2D" parent="." unique_id=814477210]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background83" type="Sprite2D" parent="." unique_id=1421557297]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background84" type="Sprite2D" parent="." unique_id=1420826622]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background85" type="Sprite2D" parent="." unique_id=1727162831]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background86" type="Sprite2D" parent="." unique_id=1668510286]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background87" type="Sprite2D" parent="." unique_id=539379245]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background88" type="Sprite2D" parent="." unique_id=1417519385]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background89" type="Sprite2D" parent="." unique_id=1947257278]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background90" type="Sprite2D" parent="." unique_id=1162349970]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 2208.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background91" type="Sprite2D" parent="." unique_id=274050938]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background92" type="Sprite2D" parent="." unique_id=568539566]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background93" type="Sprite2D" parent="." unique_id=1288285799]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background94" type="Sprite2D" parent="." unique_id=1409012075]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background95" type="Sprite2D" parent="." unique_id=1211468085]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background96" type="Sprite2D" parent="." unique_id=1784055033]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background97" type="Sprite2D" parent="." unique_id=539425469]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background98" type="Sprite2D" parent="." unique_id=866233049]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background99" type="Sprite2D" parent="." unique_id=86324849]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 3592.7617)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background100" type="Sprite2D" parent="." unique_id=1530076420]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background101" type="Sprite2D" parent="." unique_id=681756669]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background102" type="Sprite2D" parent="." unique_id=512604087]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background103" type="Sprite2D" parent="." unique_id=1843110479]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background104" type="Sprite2D" parent="." unique_id=729289933]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background105" type="Sprite2D" parent="." unique_id=1518411486]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background106" type="Sprite2D" parent="." unique_id=168205399]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background107" type="Sprite2D" parent="." unique_id=1359163800]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background108" type="Sprite2D" parent="." unique_id=381837341]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 4939.1426)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background109" type="Sprite2D" parent="." unique_id=166607675]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-9044, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background110" type="Sprite2D" parent="." unique_id=1651741081]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-6553, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background111" type="Sprite2D" parent="." unique_id=107729801]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-4228.419, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background112" type="Sprite2D" parent="." unique_id=1775896391]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(-1737.419, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background113" type="Sprite2D" parent="." unique_id=1147407326]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(689.58105, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background114" type="Sprite2D" parent="." unique_id=17048670]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(3180.581, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background115" type="Sprite2D" parent="." unique_id=256392105]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(5505.162, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background116" type="Sprite2D" parent="." unique_id=909974666]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(7996.162, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
+
+[node name="Background117" type="Sprite2D" parent="." unique_id=422536039]
+modulate = Color(0.38431373, 0.98039216, 0, 1)
+position = Vector2(9548, 5911.381)
+scale = Vector2(-3.591371, -3.591371)
+texture = ExtResource("2_umbuh")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1298741618]
 visible = false
@@ -163,6 +866,7 @@ incarnation_pickup_scene = ExtResource("8_yr1n6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=749115728]
 stream = ExtResource("11_16fjv")
+volume_db = 9.152
 autoplay = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2133761391]

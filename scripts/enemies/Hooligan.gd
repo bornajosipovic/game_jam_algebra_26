@@ -8,7 +8,7 @@ var quadrant: Rect2
 
 const HP        := 3
 const SPEED     := 800.0
-const DETECTION := 900.0
+const DETECTION := 1400.0
 const DAMAGE    := 3.0
 
 const ROAM_SPEED     := 200.0

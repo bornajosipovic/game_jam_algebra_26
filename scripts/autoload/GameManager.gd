@@ -25,8 +25,8 @@ enum PlayerClass { KNIGHT, PRIEST, RAT, CHILD }
 var current_class: PlayerClass = PlayerClass.RAT
 
 var class_weight = {
-	PlayerClass.KNIGHT: 0,
-	PlayerClass.PRIEST: 100,
+	PlayerClass.KNIGHT: 100,
+	PlayerClass.PRIEST: 0,
 	PlayerClass.CHILD: 0,
 	PlayerClass.RAT: 0
 }

@@ -49,6 +49,8 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	call_deferred("apply_wave_scaling")
+	if animated_sprite:
+		animated_sprite.play("idle")
 	
 
 func apply_wave_scaling() -> void:

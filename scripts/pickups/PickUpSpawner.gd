@@ -29,18 +29,18 @@ func spawn_pickups() -> void:
 		center = Vector2.ZERO
 
 	# Near zone (2500 - near_radius): time pickups + a seed ascension
-	spawn_in_zone(seconds_pickup_scene,     4, 2500.0,      near_radius)
-	spawn_in_zone(ascension_item_scene,     2, 2500.0,      near_radius)
-	spawn_in_zone(incarnation_pickup_scene, 2, 2500.0,      near_radius)
+	spawn_in_zone(seconds_pickup_scene,     6, 2500.0,      near_radius)
+	spawn_in_zone(ascension_item_scene,     4, 2500.0,      near_radius)
+	spawn_in_zone(incarnation_pickup_scene, 3, 2500.0,      near_radius)
 
 	# Mid zone (near_radius - mid_radius): main ascension cluster + time pickups
-	spawn_in_zone(ascension_item_scene,     5, near_radius, mid_radius)
-	spawn_in_zone(seconds_pickup_scene,     2, near_radius, mid_radius)
-	spawn_in_zone(incarnation_pickup_scene, 3, near_radius, mid_radius)
+	spawn_in_zone(ascension_item_scene,     6, near_radius, mid_radius)
+	spawn_in_zone(seconds_pickup_scene,     4, near_radius, mid_radius)
+	spawn_in_zone(incarnation_pickup_scene, 4, near_radius, mid_radius)
 
 	# Far zone (mid_radius - far_radius): ascensions + incarnation pickups
-	spawn_in_zone(ascension_item_scene,     3, mid_radius,  far_radius)
-	spawn_in_zone(incarnation_pickup_scene, 2, mid_radius,  far_radius)
+	spawn_in_zone(ascension_item_scene,     5, mid_radius,  far_radius)
+	spawn_in_zone(incarnation_pickup_scene, 3, mid_radius,  far_radius)
 
 	# --- DEBUG ---
 	print("========================================")

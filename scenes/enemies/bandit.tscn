@@ -73,6 +73,7 @@ max_speed = 1500.0
 shape = SubResource("CircleShape2D_rr0qm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1173837660]
-scale = Vector2(0.21745749, 0.2185907)
+position = Vector2(39, -15)
+scale = Vector2(0.4662986, 0.46872857)
 sprite_frames = SubResource("SpriteFrames_yfgmf")
 animation = &"idle"

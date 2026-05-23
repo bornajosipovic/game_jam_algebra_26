@@ -40,5 +40,6 @@ stretch_mode = 5
 [node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=81041669]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 autowrap_mode = 2

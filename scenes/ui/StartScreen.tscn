@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://no4brhnbaiw7"]
 
 [ext_resource type="Script" uid="uid://be6w0y6s8npmj" path="res://scripts/ui/start_screen.gd" id="1_r6ble"]
+[ext_resource type="FontFile" uid="uid://1pdqqx2nwabg" path="res://assets/Deutsch.ttf" id="2_8qqbg"]
 
 [node name="StartScreen" type="Control" unique_id=914180776]
 layout_mode = 3
@@ -32,8 +33,9 @@ alignment = 1
 [node name="Title" type="Label" parent="VBoxContainer" unique_id=1222926712]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_8qqbg")
 theme_override_font_sizes/font_size = 150
-text = "THE BIRTH OF THE DIVINE"
+text = "ASHBOUND GOD"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="VBoxContainer" unique_id=1694578391]
@@ -44,5 +46,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("2_8qqbg")
+theme_override_font_sizes/font_size = 80
 text = "PLAY"

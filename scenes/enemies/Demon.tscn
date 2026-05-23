@@ -10,7 +10,7 @@
 radius = 214.04906
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvkv"]
-radius = 215.11392
+radius = 544.8724
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hs7r"]
 atlas = ExtResource("5_4dvkv")
@@ -35,12 +35,14 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D" unique_id=232341901]
+scale = Vector2(0.25167605, 0.25167605)
 script = ExtResource("1_heald")
 sfx_hit = ExtResource("2_4dvkv")
 sfx_die = ExtResource("3_0hs7r")
 sfx_attack = ExtResource("4_wmd5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=735941590]
+scale = Vector2(-5.4347425, -5.4347425)
 shape = SubResource("CircleShape2D_i0qgb")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1938143974]
@@ -51,8 +53,10 @@ max_speed = 1500.0
 [node name="Hitbox" type="Area2D" parent="." unique_id=1245936697]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1054095951]
+scale = Vector2(-2.5968316, -2.5968316)
 shape = SubResource("CircleShape2D_4dvkv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1943823854]
+scale = Vector2(2.4530594, 2.4530594)
 sprite_frames = SubResource("SpriteFrames_heald")
 animation = &"idle"

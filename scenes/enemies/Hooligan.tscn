@@ -41,6 +41,7 @@ sfx_die = ExtResource("3_6uco8")
 sfx_attack = ExtResource("4_6wj6n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893924921]
+scale = Vector2(0.6782299, 0.6782299)
 shape = SubResource("CircleShape2D_4hgtw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=567874421]
@@ -51,9 +52,11 @@ max_speed = 1500.0
 [node name="Hitbox" type="Area2D" parent="." unique_id=1179259163]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=908105722]
+scale = Vector2(0.6782299, 0.6782299)
 shape = SubResource("CircleShape2D_hpqmx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1572064683]
+scale = Vector2(1.2413967, 1.2413967)
 sprite_frames = SubResource("SpriteFrames_3qj4t")
 animation = &"idle"
 frame_progress = 0.6447978
