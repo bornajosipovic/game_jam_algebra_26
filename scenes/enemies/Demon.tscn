@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://kyrtctcee4b2" path="res://scripts/enemies/Demon.gd" id="1_heald"]
 [ext_resource type="AudioStream" uid="uid://vkl3qsims015" path="res://assets/audio/demonGetsHit.mp3" id="2_4dvkv"]
-[ext_resource type="Texture2D" uid="uid://ucgbxjj5seor" path="res://assets/animations/knight/IDLE_VITEZ_4.png" id="2_heald"]
 [ext_resource type="AudioStream" uid="uid://coo8p86fv4kbv" path="res://assets/audio/demonDie.wav" id="3_0hs7r"]
 [ext_resource type="AudioStream" uid="uid://cas1j1ud8wyg5" path="res://assets/audio/demonHits.wav" id="4_wmd5e"]
+[ext_resource type="Texture2D" uid="uid://dt6hilvnvgxsw" path="res://assets/sprites/enemies/demon_sprites_spaced.png" id="5_4dvkv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0qgb"]
 radius = 214.04906
@@ -12,36 +12,22 @@ radius = 214.04906
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvkv"]
 radius = 215.11392
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6x8y"]
-atlas = ExtResource("2_heald")
-region = Rect2(0, 0, 250, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0qgb"]
-atlas = ExtResource("2_heald")
-region = Rect2(250, 0, 250, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dvkv"]
-atlas = ExtResource("2_heald")
-region = Rect2(500, 0, 250, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hs7r"]
-atlas = ExtResource("2_heald")
-region = Rect2(750, 0, 250, 256)
+atlas = ExtResource("5_4dvkv")
+region = Rect2(0, 0, 1372, 1638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmd5e"]
+atlas = ExtResource("5_4dvkv")
+region = Rect2(1372, 0, 1372, 1638)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_heald"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f6x8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0qgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4dvkv")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0hs7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmd5e")
 }],
 "loop": true,
 "name": &"idle",

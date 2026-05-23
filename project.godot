@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://dlcxxaftnpigc"
 UpgradeManager="*uid://cku187p0ktset"
+SpawnManager="*uid://crfbsiw6n8er6"
 
 [display]
 

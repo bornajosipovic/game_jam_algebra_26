@@ -1,16 +1,38 @@
 [gd_scene format=3 uid="uid://bggmhuxag1rpa"]
 
 [ext_resource type="Script" uid="uid://0ek2adi0dtt0" path="res://scripts/enemies/Hooligan.gd" id="1_d0gis"]
-[ext_resource type="Texture2D" uid="uid://dxv65p6s3nk87" path="res://assets/sprites/enemies_proba/hooligan.jpg" id="2_3uax0"]
 [ext_resource type="AudioStream" uid="uid://b2heju6ov7tjq" path="res://assets/audio/bruteGetsHit.wav" id="2_hpqmx"]
 [ext_resource type="AudioStream" uid="uid://bkvbiaycdfoth" path="res://assets/audio/bruteDies.wav" id="3_6uco8"]
 [ext_resource type="AudioStream" uid="uid://g3h4ehunniro" path="res://assets/audio/bruteHits.wav" id="4_6wj6n"]
+[ext_resource type="Texture2D" uid="uid://d3pmqyv16ev3e" path="res://assets/sprites/enemies/hooligan_sprites_spaced.png" id="5_hpqmx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hgtw"]
 radius = 296.13678
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpqmx"]
 radius = 299.22064
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uco8"]
+atlas = ExtResource("5_hpqmx")
+region = Rect2(0, 0, 579, 546)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wj6n"]
+atlas = ExtResource("5_hpqmx")
+region = Rect2(579, 0, 579, 546)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qj4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uco8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wj6n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Hooligan" type="CharacterBody2D" unique_id=1978706943]
 script = ExtResource("1_d0gis")
@@ -31,5 +53,7 @@ max_speed = 1500.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=908105722]
 shape = SubResource("CircleShape2D_hpqmx")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753134102]
-texture = ExtResource("2_3uax0")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1572064683]
+sprite_frames = SubResource("SpriteFrames_3qj4t")
+animation = &"idle"
+frame_progress = 0.6447978

@@ -1,16 +1,57 @@
-[gd_scene format=3 uid="uid://hooxojul3ch1"]
+[gd_scene format=3 uid="uid://cym556m1xdhm0"]
 
 [ext_resource type="Script" uid="uid://dwbv8bcxfl85e" path="res://scripts/enemies/Bandit.gd" id="1_7uncx"]
 [ext_resource type="AudioStream" uid="uid://qpti2mag2n77" path="res://assets/audio/banditGetsHit.wav" id="2_6qtup"]
-[ext_resource type="Texture2D" uid="uid://djout0ipkkljf" path="res://assets/sprites/enemies_proba/bandit.png" id="2_m82jd"]
 [ext_resource type="AudioStream" uid="uid://dw5fdey5ts2ep" path="res://assets/audio/banditDies.wav" id="3_plr4w"]
 [ext_resource type="AudioStream" uid="uid://bx1l4kpe2rchc" path="res://assets/audio/banditHits.mp3" id="4_4l8nu"]
+[ext_resource type="Texture2D" uid="uid://1x70q0wcmwl2" path="res://assets/sprites/enemies/bandit_sprites_spaced.png" id="5_6qtup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7e8wm"]
 radius = 147.01361
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rr0qm"]
 radius = 185.0027
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plr4w"]
+atlas = ExtResource("5_6qtup")
+region = Rect2(0, 0, 1344, 1142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l8nu"]
+atlas = ExtResource("5_6qtup")
+region = Rect2(1344, 0, 1344, 1142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1g78"]
+atlas = ExtResource("5_6qtup")
+region = Rect2(0, 1142, 1344, 1142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_620m0"]
+atlas = ExtResource("5_6qtup")
+region = Rect2(1344, 1142, 1344, 1142)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfgmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plr4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l8nu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1g78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_620m0")
+}],
+"loop": true,
+"name": &"stole_points",
+"speed": 5.0
+}]
 
 [node name="Bandit" type="CharacterBody2D" unique_id=1188016375]
 script = ExtResource("1_7uncx")
@@ -31,6 +72,7 @@ max_speed = 1500.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1577878760]
 shape = SubResource("CircleShape2D_rr0qm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789595975]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1173837660]
 scale = Vector2(0.21745749, 0.2185907)
-texture = ExtResource("2_m82jd")
+sprite_frames = SubResource("SpriteFrames_yfgmf")
+animation = &"idle"
