@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cgl8yxdopb1et"]
 
 [ext_resource type="Script" uid="uid://bkhysrp2vi2ls" path="res://scripts/ui/UpgradeCard.gd" id="1_yeejx"]
-[ext_resource type="Texture2D" uid="uid://cmq7qlk7ttpq3" path="res://assets/sprites/pickups/vatra.png" id="2_co4xo"]
-[ext_resource type="Texture2D" uid="uid://dthcwv22on4ee" path="res://assets/sprites/player/knight.jpg" id="3_7ulot"]
-[ext_resource type="Texture2D" uid="uid://mi3keiippo5p" path="res://assets/sprites/player/priest.jpg" id="4_7nqx0"]
-[ext_resource type="Texture2D" uid="uid://b52be6e0ids15" path="res://assets/sprites/player/rat.jpg" id="5_fvqyx"]
-[ext_resource type="Texture2D" uid="uid://c4nus0jq7aiur" path="res://assets/sprites/player/child.jpg" id="6_qmwee"]
+[ext_resource type="Texture2D" uid="uid://ckj4qbviujlrm" path="res://assets/sprites/player/generalIcon.png" id="2_co4xo"]
+[ext_resource type="Texture2D" uid="uid://deh2kj0f0w7qg" path="res://assets/sprites/player/knightIcon.png" id="3_co4xo"]
+[ext_resource type="Texture2D" uid="uid://38b0n78le0o" path="res://assets/sprites/player/priestIcon.png" id="4_7ulot"]
+[ext_resource type="Texture2D" uid="uid://cvac5dprtrmdm" path="res://assets/sprites/player/ratIcon.png" id="5_7nqx0"]
+[ext_resource type="Texture2D" uid="uid://binjwyktr12n3" path="res://assets/sprites/player/childIcon.png" id="6_fvqyx"]
 
 [node name="UpgradeCard" type="Button" unique_id=895114558]
 custom_minimum_size = Vector2(400, 600)
@@ -14,10 +14,10 @@ offset_bottom = 8.0
 size_flags_vertical = 4
 script = ExtResource("1_yeejx")
 tex_general = ExtResource("2_co4xo")
-tex_knight = ExtResource("3_7ulot")
-tex_priest = ExtResource("4_7nqx0")
-tex_rat = ExtResource("5_fvqyx")
-tex_child = ExtResource("6_qmwee")
+tex_knight = ExtResource("3_co4xo")
+tex_priest = ExtResource("4_7ulot")
+tex_rat = ExtResource("5_7nqx0")
+tex_child = ExtResource("6_fvqyx")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1730280064]
 layout_mode = 1

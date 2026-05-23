@@ -126,13 +126,13 @@ vjecna_vatra = NodePath("../VjecnaVatra")
 position = Vector2(649, 259)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=886564019 groups=["spawn_point"]]
-position = Vector2(929, 557)
+position = Vector2(758, 557)
 
 [node name="VjecnaVatra" type="Node2D" parent="." unique_id=1147254128]
-position = Vector2(1440, 482)
+position = Vector2(1411, 523)
 
 [node name="Player" parent="." unique_id=1978424915 instance=ExtResource("1_5qbjp")]
-position = Vector2(925, 559)
+position = Vector2(754, 559)
 sfx_hit = ExtResource("4_jy5j1")
 sfx_die = ExtResource("5_umbuh")
 sfx_die_rat = ExtResource("6_juaju")
@@ -146,8 +146,8 @@ sfx_knight_swirl = ExtResource("13_iehkj")
 sfx_priest_aura = ExtResource("14_iqxvy")
 
 [node name="EternalFire" parent="." unique_id=1992647352 instance=ExtResource("3_gbddb")]
-position = Vector2(1438.0001, 484.00003)
-scale = Vector2(0.45597827, 0.45597827)
+position = Vector2(1585, 193.00002)
+scale = Vector2(1.8950607, 1.8950607)
 
 [node name="PickupSpawner" type="Node" parent="." unique_id=9406140]
 script = ExtResource("4_gbddb")
